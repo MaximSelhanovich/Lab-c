@@ -25,4 +25,5 @@ int main() {
 
 int checkPythagoreanNumbers (int first, int second, int third) {
     return first * first + second * second == third * third; 
+    
 }
