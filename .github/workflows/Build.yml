@@ -22,4 +22,4 @@ jobs:
           ./test
           cd ../2_1_10  
           make test 
-          ./test < text_test.txt
+          ./test < text2_1_test.txt
