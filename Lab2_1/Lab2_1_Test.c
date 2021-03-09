@@ -1,13 +1,12 @@
 #include "Lab2_1.h"
 
 #include <stdio.h>
-#include <assert.h>
 #include <float.h>
+#include <assert.h>
 
 void testFruitCosts() {
 
     assert(tangerianCost(5) - TANGERIAN_PRICE_USD * 5  < DBL_EPSILON);
-    
     assert(peachesCost(5) - PEACHES_PRICE_USD * 5  < DBL_EPSILON);
     assert(grapeCost(5) - GRAPE_PRICE_USD * 5  < DBL_EPSILON);
     printf("Costs test are succsesful.");
@@ -16,7 +15,7 @@ void testFruitCosts() {
 void testcalculateFruitCost() {
 
     double testFruitCost[] = {5, 5, 5};
-    assert(calculateFruitCost(testFruitCost) - 17,1 < DBL_EPSILON);
+    assert(calculateFruitCost(testFruitCost) - 17.1 < DBL_EPSILON);
     printf("Fruit cost test comlete.");
 }
 
@@ -46,9 +45,9 @@ void testcalculateTotalOrderPrice() {
     double testOrderPrice2[] = {5, 5, 5};
     double testOrderPrice3[] = {10, 10, 10};
     double testOrderPrice4[] = {100, 100, 100};
-    assert(calculateTotalOrderPrice(testOrderPrice1) - 4,42 < DBL_EPSILON);
-    assert(calculateTotalOrderPrice(testOrderPrice2) - 20,1 < DBL_EPSILON);
-    assert(calculateTotalOrderPrice(testOrderPrice3) - 64,2 < DBL_EPSILON);
+    assert(calculateTotalOrderPrice(testOrderPrice1) - 4.42 < DBL_EPSILON);
+    assert(calculateTotalOrderPrice(testOrderPrice2) - 20.1 < DBL_EPSILON);
+    assert(calculateTotalOrderPrice(testOrderPrice3) - 64.2 < DBL_EPSILON);
     assert(calculateTotalOrderPrice(testOrderPrice4) - 912 < DBL_EPSILON);
     printf("Test order price complete.");
 }
@@ -57,7 +56,7 @@ void testcalculateTotalOrderPrice() {
 
 int main() {
 
-    testFruitCost();
+    testFruitCosts();
     testcalculateFruitCost();
     testCalculateDiscount();
     testCalculateDeliveryPrice();
