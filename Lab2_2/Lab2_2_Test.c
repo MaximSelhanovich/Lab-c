@@ -26,7 +26,7 @@ void testCalcSineDecompositionIterative() {
 
 void testCalcSineDecompositionRecursion() {
 
-    assert(calcSineDecompositionRecursion(0.349065, 0.0, 0.01) == 1);
+    assert(calcSineDecompositionRecursion(0.349065, 0.0, 0.01) == 2);
     printf("Sine decomposition iterative test complet");
 }
 
