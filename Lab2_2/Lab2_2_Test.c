@@ -6,7 +6,7 @@
 
 void testDegreesToRadians() {
 
-    assert(degreesToRadians(20) - 0.349 < DBL_EPSILON);
+    assert(degreesToRadians(180) - 3.1415926535 < DBL_EPSILON);
     printf("Degrees to radians test complet");
 }
 
