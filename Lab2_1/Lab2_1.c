@@ -8,8 +8,6 @@
     GRAPE
 };
 
-#ifndef TEST
-
 int main() {
 
     double shoppingCart[] = {0, 0, 0};
@@ -32,8 +30,6 @@ int main() {
     printf("\nGoodbye, thank you for using our shop!\n");
     return 0;
 }
-
-#endif
 
 unsigned int getValidUInt() {
 
