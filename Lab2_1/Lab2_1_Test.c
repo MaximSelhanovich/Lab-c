@@ -8,7 +8,7 @@ void testFruitCosts() {
 
     assert(tangerianCost(5) - TANGERIAN_PRICE_USD * 5  < DBL_EPSILON);
     assert(peachesCost(5) - PEACHES_PRICE_USD * 5  < DBL_EPSILON);
-    assert(grapeCost(5) - GRAPE_PRICE_USD * 5  < DBL_EPSILON);
+    assert(grapeCost(5) - GRAPE_PRICE_USD * 5  < 0.000000000001);
     printf("Costs test are succsesful.\n");
 }
 
