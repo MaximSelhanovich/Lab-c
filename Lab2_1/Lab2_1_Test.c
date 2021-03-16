@@ -5,7 +5,6 @@
 #include <assert.h>
 
 void testFruitCosts() {
-
     assert(tangerianCost(5) - TANGERIAN_PRICE_USD * 5  < DBL_EPSILON);
     assert(peachesCost(5) - PEACHES_PRICE_USD * 5  < DBL_EPSILON);
     assert(grapeCost(5) - GRAPE_PRICE_USD * 5 < 0.00000000001);
@@ -13,14 +12,12 @@ void testFruitCosts() {
 }
 
 void testcalculateFruitCost() {
-
     double testFruitCost[] = {5, 5, 5};
     assert(calculateFruitCost(testFruitCost) - 17.1 < DBL_EPSILON);
     printf("Fruit cost test comlete.\n");
 }
 
 void testCalculateDiscount() {
-
     double testDiscount1[] = {5, 5, 5};
     double testDiscount2[] = {100, 100, 100};
     assert(calculateDiscount(testDiscount1) - 1.0 < DBL_EPSILON);
@@ -29,7 +26,6 @@ void testCalculateDiscount() {
 }
 
 void testCalculateDeliveryPrice() {
-
     double testDelivery1 [] = {1, 1, 1};
     double testDelivery2 [] = {5, 5, 5};
     double testDelivery3 [] = {10, 10, 10};
@@ -40,7 +36,6 @@ void testCalculateDeliveryPrice() {
 }
 
 void testcalculateTotalOrderPrice() {
-
     double testOrderPrice1[] = {1, 1, 1};
     double testOrderPrice2[] = {5, 5, 5};
     double testOrderPrice3[] = {10, 10, 10};
@@ -55,11 +50,11 @@ void testcalculateTotalOrderPrice() {
 #undef main
 
 int main() {
-
     testFruitCosts();
     testcalculateFruitCost();
     testCalculateDiscount();
     testCalculateDeliveryPrice();
     testcalculateTotalOrderPrice();
     printf("\nAll tests are complited succesfuly.\n");
+    return 0;
 }
