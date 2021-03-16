@@ -27,6 +27,7 @@ int main() {
 
     printf("\nRecursive");
     calcSineDecompositionRecursion(x, 0, calculationsError);
+    printf("\n True");
     return 0;
 }
 
@@ -59,6 +60,7 @@ int calcSineDecompositionIterative(double x, double calculationsError) {
     int sign = 1, powOfX = 1, factorialDegree = 1, number = 0;
 
     do {
+        ++number;
         for(;factorialDegree <= powOfX; ++factorialDegree) {
             intermediateTerm *= x/factorialDegree;
         }
@@ -71,7 +73,6 @@ int calcSineDecompositionIterative(double x, double calculationsError) {
                 sinX, number, decompositionSumX, calculationAccuracy);
         sign *= -1;
         powOfX += 2;
-        ++number;
     }
     while(calculationAccuracy > calculationsError);
 
