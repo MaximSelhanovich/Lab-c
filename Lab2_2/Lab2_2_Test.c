@@ -6,8 +6,8 @@
 
 void testDegreesToRadians() {
 
-    assert(degreesToRadians(180) - 3.1415926535 < DBL_EPSILON);
-    printf("Degrees to radians test complet");
+    assert(degreesToRadians(20) - 0.349066 < 0.000001);
+    printf("\nDegrees to radians test completed");
 }
 
 void testSimplifyAngleDegrees() {
@@ -15,19 +15,19 @@ void testSimplifyAngleDegrees() {
     assert(simplifyAngleDegrees(390) - 30 < DBL_EPSILON);
     assert(simplifyAngleDegrees(-390) + 30 < DBL_EPSILON);
     assert(simplifyAngleDegrees(30) - 30 < DBL_EPSILON);
-    printf("Simplify angle in degrees test complet");
+    printf("\nSimplify angle in degrees tests completed");
 }
 
 void testCalcSineDecompositionIterative() {
 
     assert(calcSineDecompositionIterative(0.349065, 0.01) == 1);
-    printf("Sine decomposition iterative test complet");
+    printf("\nSine decomposition iterative tests completed");
 }
 
 void testCalcSineDecompositionRecursion() {
 
-    assert(calcSineDecompositionRecursion(0.349065, 0.0, 0.01) == 2);
-    printf("Sine decomposition iterative test complet");
+    assert(calcSineDecompositionRecursion(0.349065, 0.0, 0.01) == 1);
+    printf("\nSine decomposition recursion test completed");
 }
 
 #undef main
@@ -38,7 +38,7 @@ int main() {
     testSimplifyAngleDegrees();
     testCalcSineDecompositionIterative();
     testCalcSineDecompositionRecursion();
-    printf("All testc are completed");
+    printf("\n\nAll tests completed");
     
     return 0;
 }

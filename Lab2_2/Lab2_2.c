@@ -56,7 +56,7 @@ int calcSineDecompositionIterative(double x, double calculationsError) {
 
     double sinX = sin(x), decompositionSumX = 0,
            intermediateTerm = 1, calculationAccuracy = 0;
-    int sign = 1, powOfX = 1, factorialDegree = 1, number = 1;
+    int sign = 1, powOfX = 1, factorialDegree = 1, number = 0;
 
     do {
         for(;factorialDegree <= powOfX; ++factorialDegree) {
