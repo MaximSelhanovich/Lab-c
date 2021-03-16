@@ -36,7 +36,7 @@ unsigned int getValidUInt() {
     unsigned int temp;
     char goodCheck;
 
-    while(!scanf("%d", &temp) || scanf("%c", &goodCheck) && goodCheck != '\n') {
+    while(!scanf("%u", &temp) || (scanf("%c", &goodCheck) && goodCheck != '\n')) {
         printf("Wrong input!\nPlease, try again: ");
         fflush(stdin);
     }
@@ -148,7 +148,6 @@ double makeChanges(int fruiteType, double massOfFruiteType,
                    const char** fruitName) {
 
     unsigned int actionNumber;
-    double removeMass;
 
     printf("You have %lf kg of %s\n", massOfFruiteType, fruitName[fruiteType]);
     printf("1)Add fruit\t2)Remove fruit\nAction: ");
