@@ -193,26 +193,26 @@ void showShoppingCart(double *shoppingCart, const char** fruitName) {
 
     printf("\n\tYour shoping cart\nName\t\t  Mass\t\tPrice\n");
 
-    printf("%-10s%13.3lf%14.3f$\n",fruitName[TANGERIAN], shoppingCart[TANGERIAN],
+    printf("%-10s%13.3f%14.3f$\n",fruitName[TANGERIAN], shoppingCart[TANGERIAN],
                                     tangerianCost(shoppingCart[TANGERIAN]));
-    printf("%-10s%13.3lf%14.3f$\n",fruitName[PEACHES], shoppingCart[PEACHES],
+    printf("%-10s%13.3f%14.3f$\n",fruitName[PEACHES], shoppingCart[PEACHES],
                                     peachesCost(shoppingCart[PEACHES]));
-    printf("%-10s%13.3lf%14.3f$\n",fruitName[GRAPE], shoppingCart[GRAPE],
+    printf("%-10s%13.3f%14.3f$\n",fruitName[GRAPE], shoppingCart[GRAPE],
                                     grapeCost(shoppingCart[GRAPE]));
 }
 
 void showTotalOrderPrice(double *shoppingCart, const char** fruitName) {
 
     showShoppingCart(shoppingCart,fruitName);
-    printf("\nFruit cost(without discount)%9.3lf$\n",
+    printf("\nFruit cost(without discount)%9.3f$\n",
             calculateFruitCost(shoppingCart));
-    printf("Dicsount%29.2lf%%\n", 100 * 
+    printf("Dicsount%29.2f%%\n", 100 * 
             (1 - calculateDiscount(shoppingCart)));
-    printf("Fruit cost(with discount)%12.3lf$\n",
+    printf("Fruit cost(with discount)%12.3f$\n",
             calculateFruitCost(shoppingCart) * calculateDiscount(shoppingCart));
     printf("Delivery cost%24d$\n",
             calculateDeliveryPrice(shoppingCart));
-    printf("Total order price%20.3lf$\n", calculateTotalOrderPrice(shoppingCart));
+    printf("Total order price%20.3f$\n", calculateTotalOrderPrice(shoppingCart));
 }
 
 double calculateTotalOrderPrice(double *shoppingCart) {
