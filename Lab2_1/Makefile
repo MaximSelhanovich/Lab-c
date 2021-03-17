@@ -18,6 +18,6 @@ Lab2_1_Test: $(OBJ_TEST)
 #	$(MAKE) -C
 	$(CC) $(CFLAGS) $(OBJ_TEST) -o Lab2_1_Test -Dmain=_main $(LIBS)
 
-#.PHONY: clean
-#clean:
-#   del *.exe
+.PHONY: clean
+clean:
+	del *.exe
