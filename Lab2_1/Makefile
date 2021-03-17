@@ -13,10 +13,10 @@ OBJ_TEST = Lab2_1.c Lab2_1_Test.c
 
 Lab2_1: $(OBJ)
 #	$(MAKE) -C
-	$(CC) $(CFLAGS) $(OBJ) -o Lab1_2.exe
+	$(CC) $(CFLAGS) $(OBJ) -o Lab1_2
 Lab2_1_Test: $(OBJ_TEST)
 #	$(MAKE) -C
-	$(CC) $(CFLAGS) $(OBJ_TEST) -o Lab2_1_Test.exe -Dmain=_main $(LIBS)
+	$(CC) $(CFLAGS) $(OBJ_TEST) -o Lab2_1_Test -Dmain=_main $(LIBS)
 
 .PHONY: clean
 clean:
