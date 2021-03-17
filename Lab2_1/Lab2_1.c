@@ -149,7 +149,7 @@ double makeChanges(int fruiteType, double massOfFruiteType,
 
     unsigned int actionNumber;
 
-    printf("You have %lf kg of %s\n", massOfFruiteType, fruitName[fruiteType]);
+    printf("You have %f kg of %s\n", massOfFruiteType, fruitName[fruiteType]);
     printf("1)Add fruit\t2)Remove fruit\nAction: ");
 
     actionNumber = getValidUInt();
@@ -193,11 +193,11 @@ void showShoppingCart(double *shoppingCart, const char** fruitName) {
 
     printf("\n\tYour shoping cart\nName\t\t  Mass\t\tPrice\n");
 
-    printf("%-10s%13.3lf%14.3lf$\n",fruitName[TANGERIAN], shoppingCart[TANGERIAN],
+    printf("%-10s%13.3lf%14.3f$\n",fruitName[TANGERIAN], shoppingCart[TANGERIAN],
                                     tangerianCost(shoppingCart[TANGERIAN]));
-    printf("%-10s%13.3lf%14.3lf$\n",fruitName[PEACHES], shoppingCart[PEACHES],
+    printf("%-10s%13.3lf%14.3f$\n",fruitName[PEACHES], shoppingCart[PEACHES],
                                     peachesCost(shoppingCart[PEACHES]));
-    printf("%-10s%13.3lf%14.3lf$\n",fruitName[GRAPE], shoppingCart[GRAPE],
+    printf("%-10s%13.3lf%14.3f$\n",fruitName[GRAPE], shoppingCart[GRAPE],
                                     grapeCost(shoppingCart[GRAPE]));
 }
 
@@ -278,6 +278,6 @@ void completeOrder(double* shoppingCart) {
 
 void showFeedback(const char** feedback) {
 
-int i;
+unsigned int i;
 for (i = 0; i < 4; ++i) {printf("%s", feedback[i]);}
 }
