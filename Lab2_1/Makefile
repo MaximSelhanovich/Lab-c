@@ -15,6 +15,7 @@ Lab2_1: $(OBJ)
 #	$(MAKE) -C
 	$(CC) $(CFLAGS) $(OBJ) -o Lab1_2.exe
 Lab2_1_Test: $(OBJ_TEST)
+#	$(MAKE) -C
 	$(CC) $(CFLAGS) $(OBJ_TEST) -o Lab2_1_Test.exe -Dmain=_main $(LIBS)
 
 .PHONY: clean
