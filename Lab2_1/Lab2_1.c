@@ -251,7 +251,7 @@ int calculateDeliveryPrice(double* shoppingCart) {
 
 void completeOrder(double* shoppingCart) {
 
-    int answer, i;
+    unsigned int answer, i;
 
     if(shoppingCart[TANGERIAN] == 0 && shoppingCart[PEACHES] == 0 &&
        shoppingCart[GRAPE] == 0){
