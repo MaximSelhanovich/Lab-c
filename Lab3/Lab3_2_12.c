@@ -26,6 +26,7 @@ int main() {
 
 unsigned int getValidUInt() {
     unsigned int temp;
+
     char goodCheck;
 
     while (!scanf("%u", &temp) || temp == 0 ||
