@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "Lab3_2_12.h"
 
+
 int main() {
     unsigned int size = 1;
     unsigned int **latinSquare = NULL;
