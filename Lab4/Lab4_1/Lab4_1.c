@@ -172,10 +172,10 @@ char *resizeLine(char *line) {
     char *tempLine = NULL;
     unsigned int length = lineLength(line);
 
-    tempLine = (char *)realloc(line, (length + 2) * sizeof(char));
+    tempLine = (char *)realloc(line, (length + 1) * sizeof(char));
 
-    /*on "length" position '\n' is located*/
-    line[length] = '\0';
+    /*on "length" position '\n' is located
+    line[length] = '\0';*/
 
     if (!tempLine) return line;
 
