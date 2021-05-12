@@ -131,9 +131,9 @@ void finalTest() {
     assert(occursWord(separateWords, wordsNumber, separateWords[4]) == 1);
     assert(occursWord(separateWords, wordsNumber, separateWords[5]) == 1);
     assert(occursWord(separateWords, wordsNumber, separateWords[6]) == 3);
-    assert(occursWord(separateWords, wordsNumber, separateWords[7]) == 1);
-    assert(occursWord(separateWords, wordsNumber, separateWords[8]) == 1);
     assert(occursWord(separateWords, wordsNumber, separateWords[9]) == 1);
+    assert(occursWord(separateWords, wordsNumber, separateWords[10]) == 1);
+    assert(occursWord(separateWords, wordsNumber, separateWords[11]) == 1);
     
     separateWords = freeArray(separateWords, &wordsNumber);
 
