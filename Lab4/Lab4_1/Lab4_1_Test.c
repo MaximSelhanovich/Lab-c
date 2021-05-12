@@ -11,7 +11,7 @@ void isSomeCharTest() {
 
     assert(isDigit('8') == 1);
     assert(isDigit('n') == 0);
-    assert(isDigit('/') == 0);    
+    assert(isDigit('/') == 0);
     printf("\n\"Is digit\" test completed.");
 }
 
@@ -40,7 +40,7 @@ void swapAndCompareStringsTest() {
     fgets(firstLine, 20, stdin);
     /*Well yes*/
     fgets(secondLine, 20, stdin);
-    
+
     assert(compareStrings(firstLine, secondLine) > 0);
 
     swapStrings(&firstLine, &secondLine);
@@ -104,7 +104,7 @@ void finalTest() {
     if (!text) return;
 
     assert(linesNumber == 3);
-    
+
     wordsNumber = linesNumber * 10;
 
     assert(wordsNumber == 30);
@@ -123,7 +123,7 @@ void finalTest() {
     printArray(separateWords, wordsNumber);
 
     countAmountOfWords(separateWords, wordsNumber);
-    
+
     assert(occursWord(separateWords, wordsNumber, separateWords[0]) == 1);
     assert(occursWord(separateWords, wordsNumber, separateWords[1]) == 1);
     assert(occursWord(separateWords, wordsNumber, separateWords[2]) == 1);
@@ -134,7 +134,7 @@ void finalTest() {
     assert(occursWord(separateWords, wordsNumber, separateWords[9]) == 1);
     assert(occursWord(separateWords, wordsNumber, separateWords[10]) == 1);
     assert(occursWord(separateWords, wordsNumber, separateWords[11]) == 1);
-    
+
     separateWords = freeArray(separateWords, &wordsNumber);
 
     text = freeArray(text, &linesNumber);
