@@ -138,6 +138,7 @@ int main() {
     swapAndCompareStringsTest();
     toLowerTest();
     checkNULLTest();
+    finalTest();
 
     return 0;
 }
