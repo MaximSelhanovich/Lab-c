@@ -16,10 +16,9 @@ Lab4_1_Test: $(OBJ_TEST)
 
 CheckValgrind:
 	echo "SoMe text6789 \\ bage laGa fdUghUjU \n t37tin9 <>/.#55vg sOmE\n thrt some .,.,hubhy/.fdsghuju\n\n" > input.txt
-    echo "first
 
 	Well yes" > input.txt
-    ./Lab4_1_Test < input.txt
+        ./Lab4_1_Test < input.txt
 
 CheckLinter:
 	cpplint $(CPPLINTFLAGS) $(OBJ_TEST)
