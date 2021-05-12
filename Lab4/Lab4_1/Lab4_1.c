@@ -100,7 +100,6 @@ void textToLower(char **text, unsigned int numberOfLines) {
 
 int checkNULL(void *ptr) {
     if (!ptr) {
-
         printf("\nMemory (re)allocation error!\n");
         return 1;
     }
@@ -117,11 +116,9 @@ char **getTwoDimensionalArray(unsigned int linesNumber) {
     if (checkNULL(text)) return NULL;
 
     for (i = 0; i < linesNumber; ++i) {
-
         text[i] = (char *)malloc(255 * sizeof(char));
 
         if (checkNULL(text[i])) {
-
             for (j = 0; j < i; ++j) free(text[j]);
 
             free(text);
@@ -137,7 +134,6 @@ char **freeArray(char **text, unsigned int *linesNumber) {
     if (!text) return NULL;
 
     for (i = 0; i < *linesNumber; ++i) {
-
         if (!text[i]) continue;
         free(text[i]);
     }
@@ -157,17 +153,14 @@ char **expendText(char **text, unsigned int *linesNumber) {
                                 (*linesNumber + 3) * sizeof(char *));
 
     if (checkNULL(tempText)) {
-
         freeArray(text, linesNumber);
         return NULL;
     }
 
     for (i = *linesNumber; i < *linesNumber + 3; ++i) {
-
         tempText[i] = (char *)malloc(255 * sizeof(char));
 
         if (checkNULL(tempText[i])) {
-
             for (j = 0; j < i; ++j) free(tempText[j]);
 
             free(tempText);
@@ -234,7 +227,7 @@ void getText(char ***text, unsigned int *linesNumber) {
     else *text = resizeText(*text, i, linesNumber);
 }
 
-void getSeparateWords (char **textToRead, unsigned int linesOfText,
+void getSeparateWords(char **textToRead, unsigned int linesOfText,
                        char ***arrayToWrite, unsigned int *linesOfArray) {
     unsigned int lineToRead = 0, charToRead = 0;
     unsigned int lineToWrite = 0, charToWrite = 0;
@@ -243,7 +236,6 @@ void getSeparateWords (char **textToRead, unsigned int linesOfText,
         !*arrayToWrite || *linesOfArray <= 0) return;
 
     for (lineToRead = 0; lineToRead < linesOfText; ++lineToRead) {
-
         while (textToRead[lineToRead][charToRead] != '\0' &&
                textToRead[lineToRead][charToRead] != '\n') {
 
@@ -315,7 +307,6 @@ void countAmountOfWords(char **words, unsigned int numberOfWords) {
 
     printf("\nWords:\n");
     while (i < numberOfWords) {
-
         temp = occursWord(words, numberOfWords, words[i]);
 
         printf("\n%s - %u", words[i], temp);
