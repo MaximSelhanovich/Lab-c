@@ -238,7 +238,6 @@ void getSeparateWords(char **textToRead, unsigned int linesOfText,
     for (lineToRead = 0; lineToRead < linesOfText; ++lineToRead) {
         while (textToRead[lineToRead][charToRead] != '\0' &&
                textToRead[lineToRead][charToRead] != '\n') {
-
         /*All characters except digits and letters are considered as "spaces"*/
             while (!isLetter(textToRead[lineToRead][charToRead]) &&
                    !isDigit(textToRead[lineToRead][charToRead])  &&
@@ -248,7 +247,6 @@ void getSeparateWords(char **textToRead, unsigned int linesOfText,
 
             while (isLetter(textToRead[lineToRead][charToRead]) ||
                    isDigit(textToRead[lineToRead][charToRead])) {
-
                     (*arrayToWrite)[lineToWrite][charToWrite] =
                     textToRead[lineToRead][charToRead];
 
@@ -260,7 +258,6 @@ void getSeparateWords(char **textToRead, unsigned int linesOfText,
             if (charToWrite != 0) ++lineToWrite;
 
             if (lineToWrite >= *linesOfArray - 1) {
-
                 *arrayToWrite = expendText(*arrayToWrite, linesOfArray);
 
                 if (checkNULL(*arrayToWrite)) return;
