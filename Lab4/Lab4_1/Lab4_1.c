@@ -174,8 +174,8 @@ char *resizeLine(char *line) {
 
     tempLine = (char *)realloc(line, (length + 1) * sizeof(char));
 
-    /*on "length" position '\n' is located
-    line[length] = '\0';*/
+    /*on "length" position '\n' is located*/
+    tempLine[length] = '\0';
 
     if (!tempLine) return line;
 
