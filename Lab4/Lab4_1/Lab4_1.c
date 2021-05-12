@@ -47,7 +47,6 @@ unsigned int lineLength(const char *line) {
 }
 
 int isLetter(const char character) {
-
     if ((character >= 'A' && character <= 'Z')  ||
         (character >= 'a' && character <= 'z')) return 1;
 
@@ -55,7 +54,6 @@ int isLetter(const char character) {
 }
 
 int isDigit(const char character) {
-
     if (character >= '0' && character <= '9') return 1;
 
     return 0;
@@ -68,7 +66,6 @@ void swapStrings(char **firstLine, char **secondLine) {
 }
 
 int compareStrings(const char *firstLine, const char *secondLine) {
-
     while (*firstLine && *firstLine == *secondLine) {
         ++firstLine;
         ++secondLine;
@@ -250,7 +247,7 @@ void getSeparateWords (char **textToRead, unsigned int linesOfText,
         while (textToRead[lineToRead][charToRead] != '\0' &&
                textToRead[lineToRead][charToRead] != '\n') {
 
-                   /*All characters except digits and letters are considered as "spaces"*/
+        /*All characters except digits and letters are considered as "spaces"*/
             while (!isLetter(textToRead[lineToRead][charToRead]) &&
                    !isDigit(textToRead[lineToRead][charToRead])  &&
                     textToRead[lineToRead][charToRead] != '\0'   &&
