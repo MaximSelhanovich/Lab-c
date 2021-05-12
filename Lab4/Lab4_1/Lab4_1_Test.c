@@ -55,10 +55,10 @@ void toLowerTest() {
     char *firstLine = NULL;
     char *secondLine = NULL;
 
-    firstLine = (char *)malloc(12 * sizeof(char));
+    firstLine = (char *)malloc(13 * sizeof(char));
     if (!firstLine) return;
 
-    secondLine = (char *)malloc(12 * sizeof(char));
+    secondLine = (char *)malloc(13 * sizeof(char));
     if (!secondLine) {
         free(firstLine);
         return;
