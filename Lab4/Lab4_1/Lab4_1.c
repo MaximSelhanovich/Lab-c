@@ -11,7 +11,6 @@ int main() {
     getText(&text, &linesNumber);
 
     if (!text) return -1;
-
     wordsNumber = linesNumber * 10;
     separateWords = getTwoDimensionalArray(wordsNumber);
 
@@ -41,7 +40,6 @@ unsigned int lineLength(const char *line) {
     unsigned int counter = 0;
 
     if (!line) return 0;
-
     while (line[counter] != '\0' && line[counter] != '\n') ++counter;
     return counter;
 }
@@ -111,7 +109,6 @@ char **getTwoDimensionalArray(unsigned int linesNumber) {
     unsigned int i = 0, j = 0;
 
     if (linesNumber <= 0) return NULL;
-
     text = (char **)malloc(linesNumber * sizeof(char *));
     if (checkNULL(text)) return NULL;
 
@@ -220,10 +217,9 @@ void getText(char ***text, unsigned int *linesNumber) {
             if (checkNULL(text)) return;
         }
         fgets((*text)[i], 254, stdin);
-    }
-    while ((*text)[i][0] != '\n');
+    } while ((*text)[i][0] != '\n');
 
-    if (!i) *text = freeArray(*text, linesNumber);
+    if (!i) *text = freeArray(*text, linesNumber)
     else *text = resizeText(*text, i, linesNumber);
 }
 
