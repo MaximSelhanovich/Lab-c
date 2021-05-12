@@ -219,8 +219,9 @@ void getText(char ***text, unsigned int *linesNumber) {
         fgets((*text)[i], 254, stdin);
     } while ((*text)[i][0] != '\n');
 
-    if (!i) *text = freeArray(*text, linesNumber)
-    else *text = resizeText(*text, i, linesNumber);
+    if (!i) *text = freeArray(*text, linesNumber);
+    else
+        *text = resizeText(*text, i, linesNumber);
 }
 
 void getSeparateWords(char **textToRead, unsigned int linesOfText,
