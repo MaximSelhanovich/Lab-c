@@ -37,7 +37,6 @@ int main() {
     return 0;
 }
 
-
 /*Does not include '\\n' and '\\0' when counting*/
 unsigned int lineLength(const char *line) {
     unsigned int counter = 0;
