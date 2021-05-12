@@ -11,7 +11,7 @@ int main() {
     getText(&text, &linesNumber);
 
     if (!text) return -1;
-    
+
     wordsNumber = linesNumber * 10;
     separateWords = getTwoDimensionalArray(wordsNumber);
 
@@ -24,7 +24,6 @@ int main() {
     textToLower(separateWords, wordsNumber);
     printf("\nTo lower version of words\n");
     printArray(separateWords, wordsNumber);
-
 
     sortAlphabetically(separateWords, wordsNumber);
     printf("\nSorted version of words\n");
@@ -71,7 +70,7 @@ void swapStrings(char **firstLine, char **secondLine) {
 int compareStrings(const char *firstLine, const char *secondLine) {
 
     while (*firstLine && *firstLine == *secondLine) {
-        ++firstLine; 
+        ++firstLine;
         ++secondLine;
     }
     return (int) (*firstLine - *secondLine);
@@ -231,7 +230,7 @@ void getText(char ***text, unsigned int *linesNumber) {
             if (checkNULL(text)) return;
         }
         fgets((*text)[i], 254, stdin);
-    } 
+    }
     while ((*text)[i][0] != '\n');
 
     if (!i) *text = freeArray(*text, linesNumber);
@@ -304,7 +303,6 @@ void sortAlphabetically(char **words, unsigned int numberOfWords) {
 int occursWord(char **words, unsigned int numberOfWords, char *wordToLookFor) {
     unsigned int i = 0, counter = 0;
 
-
      if (!words || numberOfWords <= 0 || !wordToLookFor) return 0;
 
      for (i = 0; i < numberOfWords; ++i)
@@ -318,7 +316,7 @@ void countAmountOfWords(char **words, unsigned int numberOfWords) {
 
     if (!words || numberOfWords <= 0) return;
 
-    printf("\nWords:\n");   
+    printf("\nWords:\n");
     while (i < numberOfWords) {
 
         temp = occursWord(words, numberOfWords, words[i]);
