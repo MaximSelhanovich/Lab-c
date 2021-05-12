@@ -101,7 +101,7 @@ void finalTest() {
     text = getTwoDimensionalArray(linesNumber);
     getText(&text, &linesNumber);
 
-    if (!text) return -1;
+    if (!text) return;
 
     assert(linesNumber == 3);
     
@@ -112,22 +112,33 @@ void finalTest() {
     separateWords = getTwoDimensionalArray(wordsNumber);
 
     getSeparateWords(text, linesNumber, &separateWords, &wordsNumber);
-    if (!separateWords) return -1;
+    if (!separateWords) return;
 
     assert(wordsNumber == 12);
 
     textToLower(separateWords, wordsNumber);
 
     sortAlphabetically(separateWords, wordsNumber);
-    printf("\nSorted version of words\n");
+    printf("\nSorted version of words");
     printArray(separateWords, wordsNumber);
 
     countAmountOfWords(separateWords, wordsNumber);
+    
     assert(occursWord(separateWords, wordsNumber, separateWords[0]) == 1);
-
+    assert(occursWord(separateWords, wordsNumber, separateWords[1]) == 1);
+    assert(occursWord(separateWords, wordsNumber, separateWords[2]) == 1);
+    assert(occursWord(separateWords, wordsNumber, separateWords[3]) == 1);
+    assert(occursWord(separateWords, wordsNumber, separateWords[4]) == 1);
+    assert(occursWord(separateWords, wordsNumber, separateWords[5]) == 1);
+    assert(occursWord(separateWords, wordsNumber, separateWords[6]) == 3);
+    assert(occursWord(separateWords, wordsNumber, separateWords[7]) == 1);
+    assert(occursWord(separateWords, wordsNumber, separateWords[8]) == 1);
+    assert(occursWord(separateWords, wordsNumber, separateWords[9]) == 1);
+    
     separateWords = freeArray(separateWords, &wordsNumber);
 
     text = freeArray(text, &linesNumber);
+    printf("\"Final\" test completed.");
 }
 
 #undef main
