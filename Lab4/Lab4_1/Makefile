@@ -11,7 +11,7 @@ Lab4_1: $(OBJ)
 Lab4_1_Test: $(OBJ_TEST)
 	$(CC) $(CFLAGS) $(OBJ_TEST) -o Lab4_1_Test -Dmain=_main $(LIBS)
 
-	echo "firstWell yesToLoWeRtEsTtolowertest" > input.txt 
+	echo "firstWell yesToLoWeRtEsTtolowertestSoMe text6789 \\ bage laGa fdUghUjU \n t37tin9 <>/.#55vg sOmE\n thrt some .,.,hubhy/.fdsghuju\n\n" > input.txt 
 	./Lab4_1_Test < input.txt
 
 CheckValgrind:
