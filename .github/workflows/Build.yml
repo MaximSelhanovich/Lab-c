@@ -18,4 +18,4 @@ jobs:
           sudo pip install cpplint
           
     - name: Test them all
-      run: make Lab4_1_test -C Lab4/Lab4_1
+      run: make Lab4_1_Test -C Lab4/Lab4_1
