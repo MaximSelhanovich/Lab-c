@@ -37,9 +37,9 @@ void swapAndCompareStringsTest() {
     }
 
     /*first*/
-    fgets(firstLine, 6, stdin);
+    fgets(firstLine, 20, stdin);
     /*Well yes*/
-    fgets(secondLine, 9, stdin);
+    fgets(secondLine, 20, stdin);
     
     assert(compareStrings(firstLine, secondLine) > 0);
 
@@ -65,9 +65,9 @@ void toLowerTest() {
     }
 
     /*ToLoWeRtEsT*/
-    fgets(firstLine, 12, stdin);
+    fgets(firstLine, 20, stdin);
     /*tolowertest*/
-    fgets(secondLine, 12, stdin);
+    fgets(secondLine, 20, stdin);
 
     assert(charToLower('A') == 'a');
     assert(charToLower('r') == 'r');
