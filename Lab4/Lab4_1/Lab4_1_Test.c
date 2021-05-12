@@ -92,6 +92,44 @@ void checkNULLTest() {
     assert(checkNULL(notNULLptr) == 0);
     printf("\"Check NULL\" test completed.");
 }
+
+void finalTest() {
+    char **text = NULL;
+    char **separateWords = NULL;
+    unsigned int linesNumber = 5, wordsNumber;
+
+    text = getTwoDimensionalArray(linesNumber);
+    getText(&text, &linesNumber);
+
+    if (!text) return -1;
+
+    assert(linesNumber == 3);
+    
+    wordsNumber = linesNumber * 10;
+
+    assert(wordsNumber == 30);
+
+    separateWords = getTwoDimensionalArray(wordsNumber);
+
+    getSeparateWords(text, linesNumber, &separateWords, &wordsNumber);
+    if (!separateWords) return -1;
+
+    assert(wordsNumber == 12);
+
+    textToLower(separateWords, wordsNumber);
+
+    sortAlphabetically(separateWords, wordsNumber);
+    printf("\nSorted version of words\n");
+    printArray(separateWords, wordsNumber);
+
+    countAmountOfWords(separateWords, wordsNumber);
+    assert(occursWord(separateWords, wordsNumber, separateWords[0]) == 1);
+
+    separateWords = freeArray(separateWords, &wordsNumber);
+
+    text = freeArray(text, &linesNumber);
+}
+
 #undef main
 
 int main() {
