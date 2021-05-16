@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "Lab4_1.h"
 
+
 int main() {
     char **text = NULL;
     char **separateWords = NULL;
