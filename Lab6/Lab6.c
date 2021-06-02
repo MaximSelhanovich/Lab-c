@@ -1,18 +1,17 @@
 #include "Lab6.h"
 
 int main() {
-    Node *root = newNode("toot");
+    Node *root = newEmptyNode();
     fillTree(root);
 
     inOrderPalindrome(root);
     deleteTree(root);
-    
     return 0;
 }
 
 int checkEndInput(char *word) {
     int i = 0;
-    char *keyWord = "end";
+    const char *keyWord = "end";
     if (!word) return 0;
 
     if (strlen(word) != strlen(keyWord)) return 0;
@@ -21,7 +20,6 @@ int checkEndInput(char *word) {
         if (tolower(word[i]) != keyWord[i]) return 0;
     }
 
-    free(word);
     return 1;
 }
 
@@ -53,8 +51,12 @@ void fillTree(Node *root) {
 
     printf("\nEnter \"end\" as a new word to finish process\n");
     tempLine = getWord();
+
     while (!checkEndInput(tempLine)) {
-        addNodeWord(root, tempLine);
+        if (!root->word) root->word = tempLine;
+        else addNodeWord(root, tempLine);
+
         tempLine = getWord();
     }
+    free(tempLine);
 }

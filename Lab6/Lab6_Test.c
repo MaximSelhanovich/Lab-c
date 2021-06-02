@@ -25,7 +25,7 @@ void testgetWord() {
 }
 
 void testfillTree() {
-    Node *testTree = newNode("klop");
+    Node *testTree = newEmptyNode();
     Node *current = testTree;
     if (!testTree) return;
 

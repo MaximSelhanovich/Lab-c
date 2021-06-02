@@ -9,7 +9,9 @@ typedef struct Node {
 
 int checkPalindrome(const char *word);
 
-struct Node* newNode(char *word);
+Node* newEmptyNode();
+
+Node* newNode(char *word);
 
 void addNodeWord(Node *root, char *word);
 

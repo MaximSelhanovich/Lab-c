@@ -8,7 +8,7 @@ int checkPalindrome(const char *word) {
     int i = 0, k;
     int length = 0;
 
-    if (!word )return 0;
+    if (!word) return 0;
     length = strlen(word);
     k = length - 1;
 
@@ -18,6 +18,14 @@ int checkPalindrome(const char *word) {
     }
 
     return 1;
+}
+
+Node* newEmptyNode() {
+    Node *new = (Node*)malloc(sizeof(Node));
+    new->word = NULL;
+    new->left = new->right = NULL;
+
+    return new;
 }
 
 Node* newNode(char *word) {
@@ -83,10 +91,9 @@ void inOrderPalindrome(Node *root) {
     if (root->right) inOrderPalindrome(root->right);
 }
 
-void* deleteNode(Node *toDelete) {
+void deleteNode(Node *toDelete) {
     free(toDelete->word);
     free(toDelete);
-    return NULL;
 }
 
 void deleteTree(Node *root) {
