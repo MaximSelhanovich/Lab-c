@@ -7,17 +7,15 @@ CPPLINTFLAGS = --filter=-readability/casting,-legal/copyright
 
 Lab6: $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o Lab6
-	./Lab6
-
 
 Lab6_Test: $(OBJ_TEST)
 	$(CC) $(CFLAGS) $(OBJ_TEST) -o Lab6_Test -Dmain=_main $(LIBS)
- 
-	./Lab6_Test 
 
 CheckValgrind:
-    valgrind ./Lab6_Test
-	valgrind ./Lab6
+	echo "my word\nSay my name\ndoom\naboba\nhi\nonion\ntopor\nmork\nend\n" > input.txt
+    valgrind ./Lab6_Test < input.txt
+	echo "someemos\nhelp\nme\nno\nwhy?\nklopplok\nend\n" > ni.txt
+	valgrind ./Lab6 < ni.txt
 
 CheckLinter:
 	cpplint $(CPPLINTFLAGS) $(OBJ_TEST)
