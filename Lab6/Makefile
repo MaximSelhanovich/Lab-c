@@ -7,7 +7,6 @@ CPPLINTFLAGS = --filter=-readability/casting,-legal/copyright
 
 Lab6: $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o Lab6
-	./Lab6
 
 Lab6_Test: $(OBJ_TEST)
 	$(CC) $(CFLAGS) $(OBJ_TEST) -o Lab6_Test -Dmain=_main $(LIBS)
