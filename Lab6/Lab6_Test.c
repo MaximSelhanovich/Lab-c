@@ -14,6 +14,7 @@ void testgetWord() {
     char *testLine = NULL;
     
     testLine = getWord();
+    printf("\n%s\n", testLine);
     assert(strcmp(testLine, "my word"));
     free(testLine);
     
