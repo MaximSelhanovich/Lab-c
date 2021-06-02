@@ -1,1 +1,24 @@
+name: build-and-test
 
+on: 
+  push:
+    paths:
+      - 'Lab8/**'
+
+jobs:
+
+  BuildAndTest:
+
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Installing valgring and cpplint
+      run: |
+          sudo apt install valgrind
+          sudo pip install cpplint
+          
+    - name: Test them all
+      run: make all -C Lab6/
