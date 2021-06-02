@@ -1,12 +1,12 @@
 #include "Lab6.h"
 
 int main() {
-
     Node *root = newNode("toot");
     fillTree(root);
 
     inOrderPalindrome(root);
     deleteTree(root);
+    
     return 0;
 }
 
