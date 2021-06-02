@@ -25,7 +25,7 @@ void testgetWord() {
 }
 
 void testfillTree() {
-    Node *testTree = newNode("asd");
+    Node *testTree = newNode("klop");
     Node *current = testTree;
     if (!testTree) return;
 
@@ -45,15 +45,25 @@ void testfillTree() {
     current = testTree->right->left;
     assert(strcmp(current->word, "mork"));
 
+    deleteTree(testTree);
     printf("fillTree test complited\n");
 }
 
+void testcheckPalindrome() {
+    assert(!checkPalindrome(NULL));
+    assert(checkPalindrome("LoL"));
+    assert(!checkPalindrome("notPalus"));
+    assert(checkPalindrome("veveevev"));
 
-
+    printf("checkPalindrome test complited\n");
+}
 #undef main
 
 int main() {
     testcheckEndInput();
+    testgetWord();
+    testfillTree();
+    testcheckPalindrome();
 
     return 0;
 }
