@@ -12,7 +12,7 @@ Lab5_Test: $(OBJ_TEST)
 	$(CC) $(CFLAGS) $(OBJ_TEST) -o Lab5_Test -Dmain=_main $(LIBS)
 
 CheckValgrind:
-	valgrind ./Lab5_Test
+	valgrind --leak-check=full ./Lab5_Test
 	valgrind ./Lab5
 
 CheckLinter:
