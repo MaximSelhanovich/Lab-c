@@ -15,7 +15,7 @@ void testgetWord() {
     
     testLine = getWord();
     printf("\n%s\n", testLine);
-    assert(strcmp(testLine, "my word"));
+    assert(!strcmp(testLine, "my word"));
     free(testLine);
     
     testLine = getWord();
