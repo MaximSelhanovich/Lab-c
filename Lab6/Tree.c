@@ -54,7 +54,7 @@ void addNodeWord(Node *root, char *word) {
 void addNodeNode(Node *root, Node *newNode) {
     Node *current = root;
     Node *temp = NULL;
-    if(!newNode || !root) return;
+    if (!newNode || !root) return;
 
     while (current) {
         temp = current;
