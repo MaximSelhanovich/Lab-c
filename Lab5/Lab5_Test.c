@@ -2,7 +2,6 @@
 #include "BigInteger.h"
 #include <assert.h>
 
-
 void testcalculateMersenne() {
     BigInteger *mersenne = calculateMersenne(7);/*result 127*/
     BigInteger *test = newBigInteger();
@@ -45,8 +44,6 @@ void testLucasLehmerRrimalityTest() {
     
     printf("\nTest LucasLehmerRrimalityTest is complited.\n");
 }
-
-
 
 #undef main
 
