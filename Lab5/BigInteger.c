@@ -283,11 +283,18 @@ BigInteger* sumBigInteger(BigInteger *firstTerm,
     tempFirstTermRank = firstTerm->tail;
     tempSecondTermRank = secondTerm->tail;
 
+    tempRank = fabsCompareBigInteger(firstTerm, secondTerm)
+    if (tempRank == -1){
+        tempFirstTermRank = secondTerm->tail;
+        tempSecondTermRank = firstTerm->tail;
+    }
+    
     if (!mod) { 
         sum = newBigInteger();
         sum->sign = firstTerm->sign; 
     }
     
+    tempRank = 0;
     if (firstTerm->sign == secondTerm->sign) { 
         while (tempFirstTermRank || tempSecondTermRank) {
             if (tempFirstTermRank) {
