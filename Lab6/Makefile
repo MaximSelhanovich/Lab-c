@@ -12,7 +12,7 @@ Lab6_Test: $(OBJ_TEST)
 	$(CC) $(CFLAGS) $(OBJ_TEST) -o Lab6_Test -Dmain=_main $(LIBS)
 
 CheckValgrind:
-	echo "my word\nSay my name\ndoom\naboba\nhi\nonion\ntopor\nmork\nend\n" > input.txt
+	echo "my word\nSay my name\nklop\ndoom\naboba\nhi\nonion\ntopor\nmork\nend\n" > input.txt
 	valgrind ./Lab6_Test < input.txt
 	echo "someemos\nhelp\nme\nno\nwhy?\nklopplok\nend\n" > ni.txt
 	valgrind ./Lab6 < ni.txt
