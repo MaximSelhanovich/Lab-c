@@ -54,7 +54,8 @@ void fillTree(Node *root) {
 
     while (!checkEndInput(tempLine)) {
         if (!root->word) root->word = tempLine;
-        else addNodeWord(root, tempLine);
+        else
+            addNodeWord(root, tempLine);
 
         tempLine = getWord();
     }
