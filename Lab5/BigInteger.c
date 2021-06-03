@@ -264,23 +264,7 @@ void twoPowerMultiplyBigInteger(BigInteger *toDouble, unsigned char power) {
         tempValue /= 10;
     }
 }
-/*MNumber sum = CreateMNumber("");
-Item *p1 = n1.head, *p2 = n2.head;
-int digit, pos = 0, s1, s2;
-while (p1 || p2) {
-if (p1) { s1 = p1->digit; p1 = p1->next; }
-else s1 = 0;
-if (p2) { s2 = p2->digit; p2 = p2->next; }
-else s2 = 0;
-digit = (s1 + s2 + pos) % 10;
-pos = (s1 + s2 + pos) / 10;
-AddDigit(&sum, digit);
-}
-if (pos) AddDigit(&sum, pos);
-return sum;
-}*/
-/*If (mod == 0) then create new BigInteger,
-if (mod == 1) modify first BigInteger*/
+
 BigInteger* sumBigInteger(BigInteger *firstTerm,
                           BigInteger *secondTerm, char mod) {
     char tempRank = 0;
@@ -349,7 +333,7 @@ BigInteger* sumBigInteger(BigInteger *firstTerm,
             tempFirstTermRank = tempFirstTermRank->prev;
         }
 
-        if (!sum->head->value) removeFront(sum);
+        /*if (!sum->head->value) removeFront(sum);*/
     }
 
     return sum;
