@@ -3,7 +3,7 @@ name: build-and-test
 on: 
   push:
     paths:
-      - 'Lab7/**'
+      - 'Lab5/**'
 
 jobs:
 
@@ -21,4 +21,4 @@ jobs:
           sudo pip install cpplint
           
     - name: Test them all
-      run: make all -C Lab7/
+      run: make all -C Lab5/
