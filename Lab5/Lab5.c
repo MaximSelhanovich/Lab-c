@@ -53,7 +53,10 @@ int LucasLehmerRrimalityTest(int power) {
     two = newBigIntegerValue(2);
     Mersenne = calculateMersenne(power);
 
-    if(!Mersenne) return INT_MIN;
+    if(!Mersenne) {
+        delete(remainder);
+        delete(two);
+    } return INT_MIN;
 
     for (i = 0; i < power - 2; ++i) {
         tempRemainder = remainder;   
