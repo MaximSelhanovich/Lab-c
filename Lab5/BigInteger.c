@@ -264,7 +264,21 @@ void twoPowerMultiplyBigInteger(BigInteger *toDouble, unsigned char power) {
         tempValue /= 10;
     }
 }
-
+/*MNumber sum = CreateMNumber("");
+Item *p1 = n1.head, *p2 = n2.head;
+int digit, pos = 0, s1, s2;
+while (p1 || p2) {
+if (p1) { s1 = p1->digit; p1 = p1->next; }
+else s1 = 0;
+if (p2) { s2 = p2->digit; p2 = p2->next; }
+else s2 = 0;
+digit = (s1 + s2 + pos) % 10;
+pos = (s1 + s2 + pos) / 10;
+AddDigit(&sum, digit);
+}
+if (pos) AddDigit(&sum, pos);
+return sum;
+}*/
 /*If (mod == 0) then create new BigInteger,
 if (mod == 1) modify first BigInteger*/
 BigInteger* sumBigInteger(BigInteger *firstTerm,
@@ -311,12 +325,31 @@ BigInteger* sumBigInteger(BigInteger *firstTerm,
         if (tempRank) addFrontValue(sum, tempRank % 10);
         tempRank = 0;
     } else {
-        tempRank = firstTerm->sign;
-        firstTerm->sign = secondTerm->sign;
+        while (tempFirstTermRank || tempSecondTermRank) {
+            if (tempFirstTermRank) {
+                tempRank += tempFirstTermRank->value -
+                            tempSecondTermRank->value;
 
-        sum = differenceBigInteger(firstTerm, secondTerm, mod);
+                tempSecondTermRank = tempSecondTermRank->prev;
+            } else {
+                tempRank += tempFirstTermRank->value;
+            }
+            
+            if (tempFirstTermRank->prev && tempRank < 0) {
+                if (mod) tempFirstTermRank->value = tempRank + 10;
+                else addFrontValue(sum, tempRank + 10);
+                tempRank = -1;
+            }
+            else {
+                if (mod) tempFirstTermRank->value = tempRank;
+                else addFrontValue(sum, tempRank);
+                tempRank = 0;
+            }
 
-        firstTerm->sign = tempRank;
+            tempFirstTermRank = tempFirstTermRank->prev;
+        }
+
+        if (!sum->head->value) removeFront(sum);
     }
 
     return sum;
@@ -326,10 +359,7 @@ BigInteger* sumBigInteger(BigInteger *firstTerm,
   if (mod == 1) modify greater BigInteger*/
 BigInteger* differenceBigInteger(BigInteger *decreasing,
                                  BigInteger *deduction, char mod) {
-    BigInteger* difference = decreasing;
-    char tempRank = 0;
-    DigitRank *tempDecreasingRank = decreasing->tail;
-    DigitRank *tempDeductionRank = deduction->tail;
+    BigInteger* difference = NULL;
     
     if (!checkExistance(decreasing, "Decreasing(BigInteger)") ||
         !checkExistance(decreasing->head, "Decreasing(BigInteger)"))
@@ -339,70 +369,12 @@ BigInteger* differenceBigInteger(BigInteger *decreasing,
         !checkExistance(deduction->head, "Deduction(BigInteger)"))
         return NULL;
 
-    tempRank = fabsCompareBigInteger(decreasing, deduction);
-    
-    if (decreasing->sign != deduction->sign) {
-        if (!tempRank) {
-            if (!mod) difference = copyBigInteger(decreasing);
-            twoPowerMultiplyBigInteger(decreasing, 1);
-        }
-        else if (tempRank == -1) {
-            if (!mod) tempRank = deduction->sign;
-            deduction->sign = decreasing->sign;
-            difference = sumBigInteger(decreasing, deduction, mod);
-            if (!mod) deduction->sign = tempRank;
-        }
-        else {
-            if (!mod) tempRank = decreasing->sign;
-            decreasing->sign = deduction->sign;
-            difference = sumBigInteger(decreasing, deduction, mod);
-            if (!mod) decreasing->sign = tempRank;
-        }
-    } else {
-        if (!tempRank) {
-            if (mod) {
-                clear(difference);
-                addFrontValue(difference, 0);
-            }
-            else {
-                difference = newBigIntegerValue(0);
-            }
-            return difference;
-        } else if (tempRank == -1) {
-            tempDecreasingRank = deduction->tail;
-            difference = deduction;
-            if (!mod) difference = copyBigInteger(deduction);
-            tempDeductionRank = decreasing->tail;
-        }
-        else {
-            if (!mod) difference = copyBigInteger(decreasing);
-        }
 
-        while (tempDecreasingRank || tempDeductionRank) {
-            if (tempDecreasingRank) {
-                tempRank += tempDecreasingRank->value;
-                tempDecreasingRank = tempDecreasingRank->prev;
-            } 
-            
-            if (tempDeductionRank) {
-                tempRank -= tempDeductionRank->value;
-                tempDeductionRank = tempDeductionRank->prev;
-            }
-            
-            if (tempDecreasingRank->prev && tempRank < 0) {
-                if (mod) tempDecreasingRank->value = tempRank + 10;
-                else addFrontValue(difference, tempRank + 10);
-                tempRank = -1;
-            }
-            else {
-                if (mod) tempDecreasingRank->value = tempRank;
-                else addFrontValue(difference, tempRank);
-                tempRank = 0;
-            }
-        }
+    deduction->sign = '-';
 
-        if (!difference->head->value) removeFront(difference);
-    }
+    difference = sumBigInteger(decreasing, deduction, mod);
+
+    deduction->sign = '+';
 
     return difference;
 }
