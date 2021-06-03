@@ -12,12 +12,12 @@ void testcheckEndInput() {
 
 void testgetWord() {
     char *testLine = NULL;
-    
+
     testLine = getWord();
     printf("\n%s\n", testLine);
     assert(!strcmp(testLine, "my word"));
     free(testLine);
-    
+
     testLine = getWord();
     assert(!strcmp(testLine, "Say my name"));
     free(testLine);
