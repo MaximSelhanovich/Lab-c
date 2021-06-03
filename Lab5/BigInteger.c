@@ -265,12 +265,12 @@ void twoPowerMultiplyBigInteger(BigInteger *toDouble, unsigned char power) {
     }
 }
 
-BigInteger* sumBigInteger(BigInteger *firstTerm,
-                          BigInteger *secondTerm, char mod) {
+BigInteger* sumBigInteger(BigInteger* firstTerm,
+    BigInteger* secondTerm, char mod) {
     char tempRank = 0;
-    BigInteger *sum = firstTerm;
-    DigitRank *tempFirstTermRank = NULL;
-    DigitRank *tempSecondTermRank = NULL;
+    BigInteger* sum = firstTerm;
+    DigitRank* tempFirstTermRank = firstTerm->tail;
+    DigitRank* tempSecondTermRank = secondTerm->tail;
 
     if (!checkExistance(firstTerm, "First term(BigInteger)") ||
         !checkExistance(firstTerm->tail, "First term(BigInteger)"))
@@ -279,23 +279,13 @@ BigInteger* sumBigInteger(BigInteger *firstTerm,
     if (!checkExistance(secondTerm, "Second term(BigInteger)") ||
         !checkExistance(secondTerm->tail, "Second term(BigInteger)"))
         return NULL;
-    
-    tempFirstTermRank = firstTerm->tail;
-    tempSecondTermRank = secondTerm->tail;
 
-    tempRank = fabsCompareBigInteger(firstTerm, secondTerm);
-    if (tempRank == -1) {
-        tempFirstTermRank = secondTerm->tail;
-        tempSecondTermRank = firstTerm->tail;
-    }
-    
-    if (!mod) { 
+    if (!mod) {
         sum = newBigInteger();
-        sum->sign = firstTerm->sign; 
+        sum->sign = firstTerm->sign;
     }
-    
-    tempRank = 0;
-    if (firstTerm->sign == secondTerm->sign) { 
+
+    if (firstTerm->sign == secondTerm->sign) {
         while (tempFirstTermRank || tempSecondTermRank) {
             if (tempFirstTermRank) {
                 tempRank += tempFirstTermRank->value;
@@ -308,42 +298,44 @@ BigInteger* sumBigInteger(BigInteger *firstTerm,
             }
 
             if (mod) {
-                if (!tempFirstTermRank) addFrontValue(firstTerm, tempRank % 10); 
+                if (!tempFirstTermRank) addFrontValue(firstTerm, tempRank % 10);
                 else tempFirstTermRank->value = tempRank % 10;
             }
             else addFrontValue(sum, tempRank % 10);
-            
+
             tempRank /= 10;
         }
 
         if (tempRank) addFrontValue(sum, tempRank % 10);
         tempRank = 0;
-    } else {
-        while (tempFirstTermRank || tempSecondTermRank) {
+    }
+    else {
+        while (tempFirstTermRank) {
             if (tempSecondTermRank) {
                 tempRank += tempFirstTermRank->value -
-                            tempSecondTermRank->value;
+                    tempSecondTermRank->value;
 
                 tempSecondTermRank = tempSecondTermRank->prev;
-            } else {
+            }
+            else {
                 tempRank += tempFirstTermRank->value;
             }
-            
+
             if (tempFirstTermRank->prev && tempRank < 0) {
                 if (mod) tempFirstTermRank->value = tempRank + 10;
                 else addFrontValue(sum, tempRank + 10);
                 tempRank = -1;
-            } else {
+            }
+            else {
                 if (mod) tempFirstTermRank->value = tempRank;
-                else
-                    addFrontValue(sum, tempRank);
+                else addFrontValue(sum, tempRank);
                 tempRank = 0;
             }
 
             tempFirstTermRank = tempFirstTermRank->prev;
         }
 
-        /*if (!sum->head->value) removeFront(sum);*/
+        if (!sum->head->value) removeFront(sum);
     }
 
     return sum;
