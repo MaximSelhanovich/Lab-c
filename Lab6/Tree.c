@@ -31,10 +31,9 @@ Node* newEmptyNode() {
 Node* newNode(char *word) {
     Node *new = (Node*)malloc(sizeof(Node));
 
-    if(!new) {
+    if (!new) {
         printf("\nError in creation Node!\n");
-    }
-    else {
+    } else {
         new->word = word;
         new->left = new->right = NULL;
     }
@@ -46,7 +45,7 @@ void addNodeWord(Node *root, char *word) {
     Node *new = NULL;
 
     if (!root) return;
-    
+
     new = newNode(word);
     if (!new) return;
     addNodeNode(root, new);
@@ -61,16 +60,14 @@ void addNodeNode(Node *root, Node *newNode) {
         temp = current;
         if (strcmp(newNode->word, current->word) <= 0) {
             current = current->left;
-        }
-        else {
+        } else {
             current = current->right;
         }
     }
 
     if (strcmp(newNode->word, temp->word) <= 0) {
         temp->left = newNode;
-    }
-    else {
+    } else {
         temp->right = newNode;
     }
 }
@@ -102,7 +99,7 @@ void deleteTree(Node *root) {
     if (root->left) deleteTree(root->left);
 
     if (root->right) deleteTree(root->right);
-    
+
     deleteNode(root);
 }
 
@@ -110,14 +107,12 @@ Node* deleteTreeNode(Node *root, char *keyWord) {
     Node *temp = NULL;
 
     if (!root || !keyWord) return NULL;
-    
+
     if (strcmp(keyWord, root->word) == -1) {
         root->left = deleteTreeNode(root->left, keyWord);
-    }
-    else if (strcmp(keyWord, root->word) == 1) {
+    } else if (strcmp(keyWord, root->word) == 1) {
         root->right = deleteTreeNode(root->right, keyWord);
-    }
-    else {
+    }  else {
         if (!root->left && !root->right) {
             temp = root;
             root = NULL;
