@@ -320,7 +320,7 @@ BigInteger* sumBigInteger(BigInteger *firstTerm,
         tempRank = 0;
     } else {
         while (tempFirstTermRank || tempSecondTermRank) {
-            if (tempFirstTermRank) {
+            if (tempSecondTermRank) {
                 tempRank += tempFirstTermRank->value -
                             tempSecondTermRank->value;
 
