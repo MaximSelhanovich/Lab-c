@@ -19,7 +19,7 @@ void testgetWord() {
     free(testLine);
     
     testLine = getWord();
-    assert(strcmp(testLine, "Say my name"));
+    assert(!strcmp(testLine, "Say my name"));
     free(testLine);
 
     printf("getWord test complited\n");
@@ -32,19 +32,19 @@ void testfillTree() {
 
     fillTree(testTree);
 
-    assert(strcmp(current->word, "klop"));
+    assert(!strcmp(current->word, "klop"));
     current = current->left;
     assert(!strcmp(current->word, "doom"));
     current = current->left;
-    assert(strcmp(current->word, "aboba"));
+    assert(!strcmp(current->word, "aboba"));
     current = testTree->left->right;
-    assert(strcmp(current->word, "hi"));
+    assert(!strcmp(current->word, "hi"));
     current = testTree->right;
-    assert(strcmp(current->word, "onion"));
+    assert(!strcmp(current->word, "onion"));
     current = testTree->right;
-    assert(strcmp(current->word, "topor"));
+    assert(!strcmp(current->word, "topor"));
     current = testTree->right->left;
-    assert(strcmp(current->word, "mork"));
+    assert(!strcmp(current->word, "mork"));
 
     deleteTree(testTree);
     printf("fillTree test complited\n");
