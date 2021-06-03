@@ -41,7 +41,7 @@ void testfillTree() {
     assert(!strcmp(current->word, "hi"));
     current = testTree->right;
     assert(!strcmp(current->word, "onion"));
-    current = testTree->right;
+    current = current->right;
     assert(!strcmp(current->word, "topor"));
     current = testTree->right->left;
     assert(!strcmp(current->word, "mork"));
