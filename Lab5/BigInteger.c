@@ -269,8 +269,8 @@ BigInteger* sumBigInteger(BigInteger *firstTerm,
                           BigInteger *secondTerm, char mod) {
     char tempRank = 0;
     BigInteger *sum = firstTerm;
-    DigitRank *tempFirstTermRank = firstTerm->tail;
-    DigitRank *tempSecondTermRank = secondTerm->tail;
+    DigitRank *tempFirstTermRank = NULL;
+    DigitRank *tempSecondTermRank = NULL;
 
     if (!checkExistance(firstTerm, "First term(BigInteger)") ||
         !checkExistance(firstTerm->tail, "First term(BigInteger)"))
@@ -279,6 +279,9 @@ BigInteger* sumBigInteger(BigInteger *firstTerm,
     if (!checkExistance(secondTerm, "Second term(BigInteger)") ||
         !checkExistance(secondTerm->tail, "Second term(BigInteger)"))
         return NULL;
+    
+    tempFirstTermRank = firstTerm->tail;
+    tempSecondTermRank = secondTerm->tail;
 
     if (!mod) { 
         sum = newBigInteger();
@@ -323,10 +326,10 @@ BigInteger* sumBigInteger(BigInteger *firstTerm,
                 if (mod) tempFirstTermRank->value = tempRank + 10;
                 else addFrontValue(sum, tempRank + 10);
                 tempRank = -1;
-            }
-            else {
+            } else {
                 if (mod) tempFirstTermRank->value = tempRank;
-                else addFrontValue(sum, tempRank);
+                else
+                    addFrontValue(sum, tempRank);
                 tempRank = 0;
             }
 
