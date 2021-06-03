@@ -15,8 +15,8 @@ int checkEndInput(char *word) {
     if (!word) return 0;
 
     if (strlen(word) != strlen(keyWord)) return 0;
-    
-    for(i = 0; i < strlen(keyWord); ++i) {
+
+    for (i = 0; i < strlen(keyWord); ++i) {
         if (tolower(word[i]) != keyWord[i]) return 0;
     }
 
@@ -27,7 +27,7 @@ char* resizeLine(char *line) {
     char *tempLine = NULL;
     unsigned int length = strlen(line);
 
-    tempLine = (char *)realloc(line, (length + 1) * sizeof(char));
+    tempLine = (char*)realloc(line, (length + 1) * sizeof(char));
     if (!tempLine) return line;
 
     tempLine[length] = '\0';
