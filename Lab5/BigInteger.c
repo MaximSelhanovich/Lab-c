@@ -124,7 +124,7 @@ void removeEnd(BigInteger* bigInteger) {
     bigInteger->tail = bigInteger->tail->prev;
 
     if (!bigInteger->tail) bigInteger->head = NULL;
-    else 
+    else
         bigInteger->tail->next = oldTail->next;
 
     --bigInteger->length;
@@ -141,7 +141,7 @@ void removeFront(BigInteger* bigInteger) {
     bigInteger->head = bigInteger->head->next;
 
     if (!bigInteger->head) bigInteger->tail = NULL;
-    else 
+    else
         bigInteger->head->prev = oldHead->prev;
 
     --bigInteger->length;
@@ -159,7 +159,7 @@ void deleteBigInteger(BigInteger* bigInteger) {
         free(bigInteger->head);
         bigInteger->head = temp;
     }
-    
+
     free(bigInteger);
 }
 
@@ -292,12 +292,12 @@ BigInteger* sumBigInteger(BigInteger* firstTerm,
 
             if (mod) {
                 if (!tempFirstTermRank) addFrontValue(firstTerm, tempRank % 10);
-                else 
+                else
                     tempFirstTermRank->value = tempRank % 10;
-            } else { 
+            } else {
                 addFrontValue(sum, tempRank % 10);
             }
-            
+
             tempRank /= 10;
         }
 
@@ -330,11 +330,11 @@ BigInteger* differenceBigInteger(BigInteger* decreasing,
 
     if (!checkExistance(deduction, "Deduction(BigInteger)") ||
         !checkExistance(deduction->head, "Deduction(BigInteger)"))
-     
+
         return NULL;
     tempDecreasingRank = decreasing->tail;
     tempDeductionRank = deduction->tail;
-    
+
     tempRank = fabsCompareBigInteger(decreasing, deduction);
 
     if (!tempRank) {
@@ -350,12 +350,12 @@ BigInteger* differenceBigInteger(BigInteger* decreasing,
     } else if (tempRank == -1) {
         difference = copyBigInteger(deduction);
         tempDeductionRank = decreasing->tail;
-        
+
         if (decreasing->sign != deduction->sign) {
             difference->sign = decreasing->sign;
             difference = sumBigInteger(difference, decreasing, 1);
         }
-        
+
     } else {
         difference = copyBigInteger(decreasing);
         tempDeductionRank = deduction->tail;
@@ -451,14 +451,16 @@ BigInteger* multiplyBigInteger(BigInteger* firstFactor,
     tempRank = 0;
     while (tempSecondFactorRank) {
         while (tempFirstFactorRank) {
-            tempRank += tempSecondFactorRank->value * tempFirstFactorRank->value;
+            tempRank += tempSecondFactorRank->value *
+                        tempFirstFactorRank->value;
 
             if (flag) tempRank += currentElement->value;
 
             currentElement->value = tempRank % 10;
             tempRank /= 10;
 
-            if ((tempRank || tempFirstFactorRank->prev) && !currentElement->prev) {
+            if ((tempRank || tempFirstFactorRank->prev) &&
+                !currentElement->prev) {
                 addFrontValue(product, tempRank);
                 tempRank = 0;
             }
@@ -512,8 +514,7 @@ BigInteger* divideBigInteger(BigInteger* dividend, BigInteger* divisor,
 
         if (modCopyBlock) deleteBigInteger(quotient);
         quotient = newBigIntegerValue(result);
-    }
-    else if (tempRank == -1) {
+    } else if (tempRank == -1) {
         if (ModDiv) {
             result = 0;
             if (modCopyBlock) deleteBigInteger(quotient);
