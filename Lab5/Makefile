@@ -3,7 +3,7 @@ CFLAGS = -std=c89 -pedantic -Wall
 LIBS = 
 OBJ = Lab5.c DigitRank.c BigInteger.c
 OBJ_TEST = Lab5_Test.c $(OBJ)
-CPPLINTFLAGS = --filter=-readability/casting,-legal/copyright
+CPPLINTFLAGS = --filter=-readability/casting,-legal/copyright,-runtime/int
 
 Lab5: $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -O0 -o Lab5
