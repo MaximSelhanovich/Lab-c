@@ -15,15 +15,15 @@ void testcalculateMersenne() {
     forMersenne = mersenne->head;
     forTest = test->head;
     assert(forMersenne->value == forTest->value);
-    
+
     forMersenne = forMersenne->next;
     forTest = forTest->next;
     assert(forMersenne->value == forTest->value);
-    
+
     forMersenne = forMersenne->next;
     forTest = forTest->next;
     assert(forMersenne->value == forTest->value);
-    
+
     printf("\nTest calculateMersenne is complited.\n");
     deleteBigInteger(mersenne);
     deleteBigInteger(test);
@@ -41,7 +41,7 @@ void testLucasLehmerRrimalityTest() {
 
     test = LucasLehmerRrimalityTest(13);
     assert(test);
-    
+
     printf("\nTest LucasLehmerRrimalityTest is complited.\n");
 }
 
