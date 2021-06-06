@@ -1,15 +1,15 @@
 #include "Lab5.h"
 
 int main() {
-    int temp = LucasLehmerRrimalityTest(7);
-    if(temp) printf("\nLooooh");
+    int tempg = LucasLehmerRrimalityTest(15);
+    if (tempg) printf("\nYeeeeeeeees");
     else printf("\nNoooo");
     return 0;
 }
 
 BigInteger* calculateMersenne(int power) {
-    BigInteger *number = NULL;
-    BigInteger *one = NULL;
+    BigInteger* number = NULL;
+    BigInteger* one = NULL;
     int bigLoop = power / 3;
     int smallLoop = power % 3;
     int i = 0;
@@ -25,23 +25,24 @@ BigInteger* calculateMersenne(int power) {
     for (i = 0; i < bigLoop; ++i) {
         twoPowerMultiplyBigInteger(number, 3);
     }
-    
+
     for (i = 0; i < smallLoop; ++i) {
         twoPowerMultiplyBigInteger(number, 1);
     }
-    
-    differenceBigInteger(number, one, 1);
 
-    delete(one);
+    number = differenceBigInteger(number, one, 1);
+    printf("mersenne");
     printBigInteger(number);
+    deleteTree(one);
     return number;
 }
 
 int LucasLehmerRrimalityTest(int power) {
-    BigInteger *remainder = NULL;
-    BigInteger *tempRemainder = NULL;
-    BigInteger *two = NULL;
-    BigInteger *Mersenne = NULL;
+    BigInteger* remainder = NULL;
+    BigInteger* tempRemainder = NULL;
+    BigInteger* two = NULL;
+    BigInteger* Mersenne = NULL;
+    DigitRank* f = NULL;
     int i = 0;
 
     if (!(power % 2)) {
@@ -53,28 +54,29 @@ int LucasLehmerRrimalityTest(int power) {
     two = newBigIntegerValue(2);
     Mersenne = calculateMersenne(power);
 
-    if(!Mersenne) {
-        delete(remainder);
-        delete(two);
-    } return INT_MIN;
+    if (!Mersenne) return INT_MIN;
 
     for (i = 0; i < power - 2; ++i) {
-        tempRemainder = remainder;   
+        tempRemainder = remainder;
         remainder = multiplyBigInteger(remainder, remainder, 0);
+        printf("aaaaaaaa");
+        printBigInteger(remainder);
+        deleteTree(tempRemainder);
 
-        delete(tempRemainder);
-        
         remainder = differenceBigInteger(remainder, two, 1);
-
+        printf("bbbbbbbbb");
+        printBigInteger(remainder);
         remainder = divideBigInteger(remainder, Mersenne, 1, 0);
+        printf("cccccccccccccc");
+        printBigInteger(remainder);
     }
 
-    i = remainder->head->value;
+    f = remainder->head;
 
-    delete(remainder);
-    delete(two);
-    delete(Mersenne);
+    deleteTree(remainder);
+    deleteTree(two);
+    deleteTree(Mersenne);
 
-    if (!i) return 1;
+    if (!f) return 1;
     else return 0;
 }
