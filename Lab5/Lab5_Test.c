@@ -25,8 +25,8 @@ void testcalculateMersenne() {
     assert(forMersenne->value == forTest->value);
     
     printf("\nTest calculateMersenne is complited.\n");
-    delete(mersenne);
-    delete(test);
+    deleteBigInteger(mersenne);
+    deleteBigInteger(test);
 }
 
 void testLucasLehmerRrimalityTest() {
