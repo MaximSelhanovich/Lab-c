@@ -33,7 +33,7 @@ BigInteger* calculateMersenne(int power) {
     number = differenceBigInteger(number, one, 1);
     printf("mersenne");
     printBigInteger(number);
-    deleteTree(one);
+    deleteBigInteger(one);
     return number;
 }
 
@@ -61,7 +61,7 @@ int LucasLehmerRrimalityTest(int power) {
         remainder = multiplyBigInteger(remainder, remainder, 0);
         printf("aaaaaaaa");
         printBigInteger(remainder);
-        deleteTree(tempRemainder);
+        deleteBigInteger(tempRemainder);
 
         remainder = differenceBigInteger(remainder, two, 1);
         printf("bbbbbbbbb");
@@ -73,9 +73,9 @@ int LucasLehmerRrimalityTest(int power) {
 
     f = remainder->head;
 
-    deleteTree(remainder);
-    deleteTree(two);
-    deleteTree(Mersenne);
+    deleteBigInteger(remainder);
+    deleteBigInteger(two);
+    deleteBigInteger(Mersenne);
 
     if (!f) return 1;
     else return 0;
