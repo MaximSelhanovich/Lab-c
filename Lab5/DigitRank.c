@@ -7,6 +7,7 @@ char checkExistance(void *ptrToCheck, const char *textToPrint) {
     }
     return 1;
 }
+
 DigitRank* newDigitRankValue(char value) {
     DigitRank* temp = NULL;
 
