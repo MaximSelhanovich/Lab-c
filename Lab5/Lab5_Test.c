@@ -37,7 +37,7 @@ void testLucasLehmerRrimalityTest() {
     assert(test == INT_MIN);
 
     test = LucasLehmerRrimalityTest(9);
-    assert(test);
+    assert(!test);
 
     test = LucasLehmerRrimalityTest(13);
     assert(test);
