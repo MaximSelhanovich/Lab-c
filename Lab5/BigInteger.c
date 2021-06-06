@@ -509,7 +509,7 @@ BigInteger* divideBigInteger(BigInteger* dividend, BigInteger* divisor,
 
     if (!tempRank) {
         if (!ModDiv) result = 0;
-        else 
+        else
             result = 1;
 
         if (modCopyBlock) deleteBigInteger(quotient);
