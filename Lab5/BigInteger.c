@@ -166,10 +166,7 @@ void deleteBigInteger(BigInteger* bigInteger) {
 void printBigInteger(BigInteger* bigInteger) {
     DigitRank* temp = NULL;
 
-    if (!bigInteger || !bigInteger->tail) {
-        printf("\nSomr\n");
-        return;
-    }
+    if (!bigInteger || !bigInteger->tail) return;
 
     temp = bigInteger->head;
     printf("\nBigInteger: %c", bigInteger->sign);
