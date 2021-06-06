@@ -5,8 +5,7 @@ BigInteger* newBigInteger() {
 
     if (!bigInteger) {
         printf("\nErrorr in list creation!\n");
-    }
-    else {
+    } else {
         bigInteger->sign = '+';
         bigInteger->length = 0;
         bigInteger->head = NULL;
@@ -22,15 +21,13 @@ void addFrontRank(BigInteger* bigInteger, DigitRank* rank) {
     if (rank->value < 0) {
         bigInteger->sign = '-';
         rank->value = -rank->value;
-    }
-    else {
+    } else {
         bigInteger->sign = '+';
     }
 
     if (!bigInteger->tail) {
         bigInteger->tail = rank;
-    }
-    else {
+    } else {
         if (bigInteger->head->value < 0) {
             printf("\nSign of previous head was changed to '+'."
                 "Only first digit in BigInteger can be negative.\n");
@@ -86,8 +83,7 @@ void addEndRank(BigInteger* bigInteger, DigitRank* rank) {
             bigInteger->sign = '-';
         }
         bigInteger->head = rank;
-    }
-    else {
+    } else {
         if (rank->value < 0) {
             printf("\nWrong input."
                 "Only first digit in BigInteger can be negative.\n");
@@ -128,7 +124,8 @@ void removeEnd(BigInteger* bigInteger) {
     bigInteger->tail = bigInteger->tail->prev;
 
     if (!bigInteger->tail) bigInteger->head = NULL;
-    else bigInteger->tail->next = oldTail->next;
+    else 
+        bigInteger->tail->next = oldTail->next;
 
     --bigInteger->length;
     free(oldTail);
@@ -144,7 +141,8 @@ void removeFront(BigInteger* bigInteger) {
     bigInteger->head = bigInteger->head->next;
 
     if (!bigInteger->head) bigInteger->tail = NULL;
-    else bigInteger->head->prev = oldHead->prev;
+    else 
+        bigInteger->head->prev = oldHead->prev;
 
     --bigInteger->length;
     free(oldHead);
@@ -294,17 +292,18 @@ BigInteger* sumBigInteger(BigInteger* firstTerm,
 
             if (mod) {
                 if (!tempFirstTermRank) addFrontValue(firstTerm, tempRank % 10);
-                else tempFirstTermRank->value = tempRank % 10;
+                else 
+                    tempFirstTermRank->value = tempRank % 10;
+            } else { 
+                addFrontValue(sum, tempRank % 10);
             }
-            else addFrontValue(sum, tempRank % 10);
-
+            
             tempRank /= 10;
         }
 
         if (tempRank) addFrontValue(sum, tempRank % 10);
         tempRank = 0;
-    }
-    else {
+    } else {
         tempRank = firstTerm->sign;
         firstTerm->sign = secondTerm->sign;
 
@@ -341,25 +340,23 @@ BigInteger* differenceBigInteger(BigInteger* decreasing,
     if (!tempRank) {
         if (decreasing->sign != deduction->sign) {
             difference = newBigIntegerValue(0);
-        }
-        else {
+        } else {
             difference = copyBigInteger(deduction);
             twoPowerMultiplyBigInteger(difference, 1);
         }
 
         if (mod) deleteBigInteger(decreasing);
         return difference;
-    }
-    else if (tempRank == -1) {
+    } else if (tempRank == -1) {
         difference = copyBigInteger(deduction);
         tempDeductionRank = decreasing->tail;
+        
         if (decreasing->sign != deduction->sign) {
             difference->sign = decreasing->sign;
             difference = sumBigInteger(difference, decreasing, 1);
         }
-
-    }
-    else {
+        
+    } else {
         difference = copyBigInteger(decreasing);
         tempDeductionRank = deduction->tail;
         if (decreasing->sign != deduction->sign) {
@@ -442,8 +439,7 @@ BigInteger* multiplyBigInteger(BigInteger* firstFactor,
         tempFirstFactorRank = secondFactor->tail;
         product = copyBigInteger(secondFactor);
         tempSecondFactorRank = firstFactor->tail;
-    }
-    else {
+    } else {
         product = copyBigInteger(firstFactor);
     }
 
@@ -511,7 +507,8 @@ BigInteger* divideBigInteger(BigInteger* dividend, BigInteger* divisor,
 
     if (!tempRank) {
         if (!ModDiv) result = 0;
-        else result = 1;
+        else 
+            result = 1;
 
         if (modCopyBlock) deleteBigInteger(quotient);
         quotient = newBigIntegerValue(result);
@@ -521,17 +518,14 @@ BigInteger* divideBigInteger(BigInteger* dividend, BigInteger* divisor,
             result = 0;
             if (modCopyBlock) deleteBigInteger(quotient);
             quotient = newBigIntegerValue(result);
-        }
-        else {
+        } else {
             if (modCopyBlock) {
                 quotient = dividend;
-            }
-            else {
+            } else {
                 quotient = copyBigInteger(dividend);
             }
         }
-    }
-    else {
+    } else {
         quotient = copyBigInteger(dividend);
 
         while ((temp = fabsCompareBigInteger(quotient, divisor)) == 1) {
