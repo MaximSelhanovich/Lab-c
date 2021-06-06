@@ -19,8 +19,7 @@ DigitRank* newDigitRankValue(char value) {
 
     if (!temp) {
         printf("\nError in creation digit rank.\n");
-    }
-    else {
+    } else {
         temp->value = value;
         temp->next = NULL;
         temp->prev = NULL;
