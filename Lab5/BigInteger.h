@@ -32,7 +32,7 @@ void removeFront(BigInteger* bigInteger);
 
 void clear(BigInteger* bigInteger);
 
-void delete(BigInteger* bigInteger);
+void deleteBigInteger(BigInteger* bigInteger);
 
 void printBigInteger(BigInteger* bigInteger);
 
