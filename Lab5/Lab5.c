@@ -1,8 +1,8 @@
 #include "Lab5.h"
 
 int main() {
-    int tempg = LucasLehmerRrimalityTest(15);
-    if (tempg) printf("\nYeeeeeeeees");
+    int temp = LucasLehmerRrimalityTest(7);
+    if(temp) printf("\nYeeeeeees");
     else printf("\nNoooo");
     return 0;
 }
@@ -45,7 +45,7 @@ int LucasLehmerRrimalityTest(int power) {
     DigitRank* f = NULL;
     int i = 0;
 
-    if (!(power % 2)) {
+    if (!(power % 2) || power < 0) {
         printf("\nPower must be at least odd.\n");
         return INT_MIN;
     }
@@ -70,6 +70,7 @@ int LucasLehmerRrimalityTest(int power) {
         printf("cccccccccccccc");
         printBigInteger(remainder);
     }
+
     f = remainder->head;
 
     deleteBigInteger(remainder);
