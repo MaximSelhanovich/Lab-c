@@ -3,7 +3,7 @@
 int main() {
     int temp = LucasLehmerRrimalityTest(7);
     if (temp) printf("\nYeeeeeees");
-    else 
+    else
         printf("\nNoooo");
     return 0;
 }
@@ -73,6 +73,6 @@ int LucasLehmerRrimalityTest(int power) {
     deleteBigInteger(Mersenne);
 
     if (!f) return 1;
-    else 
+    else
         return 0;
 }
