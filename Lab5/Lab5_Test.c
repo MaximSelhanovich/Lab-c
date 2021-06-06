@@ -39,7 +39,7 @@ void testLucasLehmerRrimalityTest() {
     test = LucasLehmerRrimalityTest(9);
     assert(test);
 
-    test = LucasLehmerRrimalityTest(17);
+    test = LucasLehmerRrimalityTest(13);
     assert(test);
     
     printf("\nTest LucasLehmerRrimalityTest is complited.\n");
