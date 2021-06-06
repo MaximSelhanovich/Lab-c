@@ -11,7 +11,7 @@ void testcalculateMersenne() {
     addFrontValue(test, 7);
     addFrontValue(test, 2);
     addFrontValue(test, 1);
-    
+
     forMersenne = mersenne->head;
     forTest = test->head;
     assert(forMersenne->value == forTest->value);
