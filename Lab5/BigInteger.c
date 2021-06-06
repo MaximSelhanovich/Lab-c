@@ -1,12 +1,7 @@
 #include "BigInteger.h"
 
-char myFabs(char value) {
-    if (value < 0) return -value;
-    return value;
-}
-
 BigInteger* newBigInteger() {
-    BigInteger *bigInteger = (BigInteger*)malloc(sizeof(BigInteger));
+    BigInteger* bigInteger = (BigInteger*)malloc(sizeof(BigInteger));
 
     if (!bigInteger) {
         printf("\nErrorr in list creation!\n");
@@ -21,22 +16,7 @@ BigInteger* newBigInteger() {
     return bigInteger;
 }
 
-BigInteger *newBigIntegerValue(long int value) {
-    BigInteger *newBigInt = newBigInteger();
-
-    while (value) {
-        addFrontValue(newBigInt, value % 10);
-        value /= 10;
-    }
-    if (newBigInt->head->value < 0) {
-        newBigInt->sign = '-';
-        newBigInt->head->value = -newBigInt->head->value;
-    }
-
-    return newBigInt;
-}
-
-void addFrontRank(BigInteger *bigInteger, DigitRank *rank) {
+void addFrontRank(BigInteger* bigInteger, DigitRank* rank) {
     if (!checkExistance(bigInteger, "List")) return;
     if (!checkExistance(rank, "Digit rank")) return;
     if (rank->value < 0) {
@@ -53,7 +33,7 @@ void addFrontRank(BigInteger *bigInteger, DigitRank *rank) {
     else {
         if (bigInteger->head->value < 0) {
             printf("\nSign of previous head was changed to '+'."
-                    "Only first digit in BigInteger can be negative.\n");
+                "Only first digit in BigInteger can be negative.\n");
             return;
         }
 
@@ -66,21 +46,37 @@ void addFrontRank(BigInteger *bigInteger, DigitRank *rank) {
 }
 
 void addFrontValue(BigInteger* bigInteger, char value) {
-    DigitRank *temp = NULL;
+    DigitRank* temp = NULL;
 
     if (!checkExistance(bigInteger, "List")) return;
 
     temp = newDigitRankValue(value);
 
     if (!temp) {
-        printf("\nError in additing node. It wasn't add.\n");    
+        printf("\nError in additing node. It wasn't add.\n");
         return;
     }
 
     addFrontRank(bigInteger, temp);
 }
 
-void addEndRank(BigInteger* bigInteger, DigitRank *rank) {
+BigInteger* newBigIntegerValue(long int value) {
+    BigInteger* newBigInt = newBigInteger();
+
+    while (value) {
+        addFrontValue(newBigInt, value % 10);
+        value /= 10;
+    }
+
+    if (value < 0) {
+        newBigInt->sign = '-';
+        newBigInt->head->value = -newBigInt->head->value;
+    }
+
+    return newBigInt;
+}
+
+void addEndRank(BigInteger* bigInteger, DigitRank* rank) {
     if (!checkExistance(bigInteger, "List")) return;
     if (!checkExistance(rank, "Digit rank")) return;
 
@@ -90,11 +86,11 @@ void addEndRank(BigInteger* bigInteger, DigitRank *rank) {
             bigInteger->sign = '-';
         }
         bigInteger->head = rank;
-    } 
+    }
     else {
         if (rank->value < 0) {
-            printf("\nWrong input." 
-                   "Only first digit in BigInteger can be negative.\n");
+            printf("\nWrong input."
+                "Only first digit in BigInteger can be negative.\n");
             return;
         }
         rank->prev = bigInteger->tail;
@@ -102,27 +98,27 @@ void addEndRank(BigInteger* bigInteger, DigitRank *rank) {
     }
 
     ++bigInteger->length;
-    bigInteger->tail = rank;  
+    bigInteger->tail = rank;
 }
 
 void addEndValue(BigInteger* bigInteger, char value) {
-    DigitRank *temp = NULL;
+    DigitRank* temp = NULL;
 
     if (!checkExistance(bigInteger, "List")) return;
 
     temp = newDigitRankValue(value);
 
     if (!temp) {
-        printf("\nError in additing node. It wasn't add.\n");    
+        printf("\nError in additing node. It wasn't add.\n");
         return;
     }
     addEndRank(bigInteger, temp);
 }
 
 void removeEnd(BigInteger* bigInteger) {
-    DigitRank *oldTail = NULL;
+    DigitRank* oldTail = NULL;
 
-    if(!bigInteger || !bigInteger->tail) {
+    if (!bigInteger || !bigInteger->tail) {
         printf("\nErrororbrfgb removeend\n");
         return;
     }
@@ -139,9 +135,9 @@ void removeEnd(BigInteger* bigInteger) {
 }
 
 void removeFront(BigInteger* bigInteger) {
-    DigitRank *oldHead = NULL;
+    DigitRank* oldHead = NULL;
 
-    if(!bigInteger || !bigInteger->head) return;
+    if (!bigInteger || !bigInteger->head) return;
     if (bigInteger->sign == '-') bigInteger->sign = '+';
     oldHead = bigInteger->head;
 
@@ -154,36 +150,28 @@ void removeFront(BigInteger* bigInteger) {
     free(oldHead);
 }
 
-void clear(BigInteger* bigInteger) {
-    DigitRank *temp = NULL;
+void deleteBigInteger(BigInteger* bigInteger) {
+    DigitRank* temp = NULL;
 
     if (!bigInteger) return;
-
     temp = bigInteger->head;
 
     while (bigInteger->head) {
         temp = bigInteger->head->next;
-
         free(bigInteger->head);
-
         bigInteger->head = temp;
     }
-    bigInteger->tail = NULL;
-
-    bigInteger->length = 0;
-    bigInteger->sign = '+';
-}
-
-void delete(BigInteger* bigInteger) {
-    clear(bigInteger);
-
+    
     free(bigInteger);
 }
 
 void printBigInteger(BigInteger* bigInteger) {
-    DigitRank *temp = NULL;
+    DigitRank* temp = NULL;
 
-    if (!bigInteger) return;
+    if (!bigInteger || !bigInteger->tail) {
+        printf("\nSomr\n");
+        return;
+    }
 
     temp = bigInteger->head;
     printf("\nBigInteger: %c", bigInteger->sign);
@@ -193,9 +181,9 @@ void printBigInteger(BigInteger* bigInteger) {
     }
 }
 
-char fabsCompareBigInteger(BigInteger *first, BigInteger *second) {
-    DigitRank *tempFirstRank = NULL;
-    DigitRank *tempSecondRank = NULL;
+char fabsCompareBigInteger(BigInteger* first, BigInteger* second) {
+    DigitRank* tempFirstRank = NULL;
+    DigitRank* tempSecondRank = NULL;
 
     if (!checkExistance(first, "First BigInteger") ||
         !checkExistance(first->tail, "First BigInteger"))
@@ -213,17 +201,17 @@ char fabsCompareBigInteger(BigInteger *first, BigInteger *second) {
 
     while (tempFirstRank) {
         if (tempFirstRank->value < tempSecondRank->value) return -1;
-        
+
         if (tempFirstRank->value > tempSecondRank->value) return 1;
         tempFirstRank = tempFirstRank->next;
-        tempSecondRank = tempSecondRank->next;    
+        tempSecondRank = tempSecondRank->next;
     }
 
     return 0;
 }
 
-BigInteger* copyBigInteger(BigInteger *copyFrom) {
-    DigitRank *tempDigitRank = NULL;
+BigInteger* copyBigInteger(BigInteger* copyFrom) {
+    DigitRank* tempDigitRank = NULL;
     BigInteger* tempBigInteger = NULL;
 
     if (!copyFrom || !copyFrom->head) return NULL;
@@ -242,18 +230,20 @@ BigInteger* copyBigInteger(BigInteger *copyFrom) {
     return tempBigInteger;
 }
 
-void twoPowerMultiplyBigInteger(BigInteger *toDouble, unsigned char power) {
-    DigitRank *tempRank = toDouble->tail;
+void twoPowerMultiplyBigInteger(BigInteger* toDouble, unsigned char power) {
+    DigitRank* tempRank = NULL;
     char tempValue = 0;
     if (!toDouble || !toDouble->tail) return;
+
+    tempRank = toDouble->tail;
 
     if (power > 3) {
         printf("\nUnfortunately only power 3 is available.\n");
         return;
     }
 
-    while(tempRank) {
-        tempValue += tempRank->value << power;
+    while (tempRank) {
+        tempValue += (tempRank->value << power);
         tempRank->value = tempValue % 10;
         tempValue /= 10;
         tempRank = tempRank->prev;
@@ -265,12 +255,14 @@ void twoPowerMultiplyBigInteger(BigInteger *toDouble, unsigned char power) {
     }
 }
 
-BigInteger* sumBigInteger(BigInteger *firstTerm,
-                          BigInteger *secondTerm, char mod) {
+/*If (mod == 0) then create new BigInteger,
+  if (mod == 1) modify greater BigInteger*/
+BigInteger* sumBigInteger(BigInteger* firstTerm,
+    BigInteger* secondTerm, char mod) {
     char tempRank = 0;
-    BigInteger *sum = firstTerm;
-    DigitRank *tempFirstTermRank = firstTerm->tail;
-    DigitRank *tempSecondTermRank = secondTerm->tail;
+    BigInteger* sum = firstTerm;
+    DigitRank* tempFirstTermRank = NULL;
+    DigitRank* tempSecondTermRank = NULL;
 
     if (!checkExistance(firstTerm, "First term(BigInteger)") ||
         !checkExistance(firstTerm->tail, "First term(BigInteger)"))
@@ -280,12 +272,15 @@ BigInteger* sumBigInteger(BigInteger *firstTerm,
         !checkExistance(secondTerm->tail, "Second term(BigInteger)"))
         return NULL;
 
-    if (!mod) { 
+    tempFirstTermRank = firstTerm->tail;
+    tempSecondTermRank = secondTerm->tail;
+
+    if (!mod) {
         sum = newBigInteger();
-        sum->sign = firstTerm->sign; 
+        sum->sign = firstTerm->sign;
     }
-    
-    if (firstTerm->sign == secondTerm->sign) { 
+
+    if (firstTerm->sign == secondTerm->sign) {
         while (tempFirstTermRank || tempSecondTermRank) {
             if (tempFirstTermRank) {
                 tempRank += tempFirstTermRank->value;
@@ -298,42 +293,24 @@ BigInteger* sumBigInteger(BigInteger *firstTerm,
             }
 
             if (mod) {
-                if (!tempFirstTermRank) addFrontValue(firstTerm, tempRank % 10); 
+                if (!tempFirstTermRank) addFrontValue(firstTerm, tempRank % 10);
                 else tempFirstTermRank->value = tempRank % 10;
             }
             else addFrontValue(sum, tempRank % 10);
-            
+
             tempRank /= 10;
         }
 
         if (tempRank) addFrontValue(sum, tempRank % 10);
         tempRank = 0;
-    } else {
-        while (tempFirstTermRank) {
-            if (tempSecondTermRank) {
-                tempRank += tempFirstTermRank->value -
-                            tempSecondTermRank->value;
+    }
+    else {
+        tempRank = firstTerm->sign;
+        firstTerm->sign = secondTerm->sign;
 
-                tempSecondTermRank = tempSecondTermRank->prev;
-            } else {
-                tempRank += tempFirstTermRank->value;
-            }
-            
-            if (tempFirstTermRank->prev && tempRank < 0) {
-                if (mod) tempFirstTermRank->value = tempRank + 10;
-                else addFrontValue(sum, tempRank + 10);
-                tempRank = -1;
-            }
-            else {
-                if (mod) tempFirstTermRank->value = tempRank;
-                else addFrontValue(sum, tempRank);
-                tempRank = 0;
-            }
+        sum = differenceBigInteger(firstTerm, secondTerm, mod);
 
-            tempFirstTermRank = tempFirstTermRank->prev;
-        }
-
-        if (!sum->head->value) removeFront(sum);
+        firstTerm->sign = tempRank;
     }
 
     return sum;
@@ -341,41 +318,106 @@ BigInteger* sumBigInteger(BigInteger *firstTerm,
 
 /*If (mod == 0) then create new BigInteger,
   if (mod == 1) modify greater BigInteger*/
-BigInteger* differenceBigInteger(BigInteger *decreasing,
-                                 BigInteger *deduction, char mod) {
-    BigInteger* difference = NULL;
-    
+BigInteger* differenceBigInteger(BigInteger* decreasing,
+    BigInteger* deduction, char mod) {
+    BigInteger* difference = decreasing;
+    char tempRank = 0;
+    DigitRank* tempDecreasingRank = NULL;
+    DigitRank* tempDeductionRank = NULL;
+
     if (!checkExistance(decreasing, "Decreasing(BigInteger)") ||
         !checkExistance(decreasing->head, "Decreasing(BigInteger)"))
         return NULL;
 
     if (!checkExistance(deduction, "Deduction(BigInteger)") ||
         !checkExistance(deduction->head, "Deduction(BigInteger)"))
+     
         return NULL;
+    tempDecreasingRank = decreasing->tail;
+    tempDeductionRank = deduction->tail;
+    
+    tempRank = fabsCompareBigInteger(decreasing, deduction);
 
+    if (!tempRank) {
+        if (decreasing->sign != deduction->sign) {
+            difference = newBigIntegerValue(0);
+        }
+        else {
+            difference = copyBigInteger(deduction);
+            twoPowerMultiplyBigInteger(difference, 1);
+        }
 
-    deduction->sign = '-';
+        if (mod) deleteBigInteger(decreasing);
+        return difference;
+    }
+    else if (tempRank == -1) {
+        difference = copyBigInteger(deduction);
+        tempDeductionRank = decreasing->tail;
+        if (decreasing->sign != deduction->sign) {
+            difference->sign = decreasing->sign;
+            difference = sumBigInteger(difference, decreasing, 1);
+        }
 
-    difference = sumBigInteger(decreasing, deduction, mod);
+    }
+    else {
+        difference = copyBigInteger(decreasing);
+        tempDeductionRank = deduction->tail;
+        if (decreasing->sign != deduction->sign) {
+            difference->sign = decreasing->sign;
+            difference = sumBigInteger(difference, deduction, 1);
+        }
+    }
 
-    deduction->sign = '+';
+    tempRank = 0;
+    tempDecreasingRank = difference->tail;
+    if (decreasing->sign == deduction->sign) {
+        while (tempDecreasingRank || tempDeductionRank) {
+            if (tempDecreasingRank) {
+                tempRank += tempDecreasingRank->value;
+            }
 
+            if (tempDeductionRank) {
+                tempRank -= tempDeductionRank->value;
+            }
+
+            if (tempRank < 0) {
+                tempDecreasingRank->value = tempRank + 10;
+                tempRank = -1;
+            } else if (tempDecreasingRank) {
+                tempDecreasingRank->value = tempRank;
+                tempRank = 0;
+            }
+
+            tempDecreasingRank = tempDecreasingRank->prev;
+
+            if (tempDeductionRank) {
+                tempDeductionRank = tempDeductionRank->prev;
+            }
+        }
+
+        if (!difference->head->value) {
+            removeFront(difference);
+        }
+    }
+
+    if (mod) deleteBigInteger(decreasing);
     return difference;
 }
 
 /*If (mod == 0) then create new BigInteger,
-  if (mod == 1) modify greater BigInteger*/
-BigInteger* multiplyBigInteger(BigInteger *firstFactor,
-                               BigInteger *secondFactor, char mod) {
+  if (mod == 1) modify first BigInteger*/
+BigInteger* multiplyBigInteger(BigInteger* firstFactor,
+    BigInteger* secondFactor, char mod) {
     char tempRank = 0;
     BigInteger* product = firstFactor;
-    DigitRank *tempFirstFactorRank = firstFactor->tail;
-    DigitRank *tempSecondFactorRank = secondFactor->tail;
-    BigInteger *deleteLater = NULL;
-    DigitRank *endOfFirstBigInt = NULL;
-    DigitRank *currentElement = NULL;
-    DigitRank *returnToPosition = NULL;
+    DigitRank* tempFirstFactorRank = NULL;
+    DigitRank* tempSecondFactorRank = NULL;
+    BigInteger* deleteLater = firstFactor;
+    DigitRank* endOfFirstBigInt = NULL;
+    DigitRank* currentElement = NULL;
+    DigitRank* returnToPosition = NULL;
     char flag = 0;
+
     if (!checkExistance(firstFactor, "First factor(BigInteger)") ||
         !checkExistance(firstFactor->tail, "First factor(BigInteger)"))
         return NULL;
@@ -384,37 +426,39 @@ BigInteger* multiplyBigInteger(BigInteger *firstFactor,
         !checkExistance(secondFactor->tail, "Second factor(BigInteger)"))
         return NULL;
 
+    tempFirstFactorRank = firstFactor->tail;
+    tempSecondFactorRank = secondFactor->tail;
+    deleteLater = firstFactor;
+
     if (firstFactor->head->value == 0 || secondFactor->head->value == 0) {
-        if (mod) clear(product);
-        else product = newBigInteger();
-        addFrontValue(product, 0);
+        if (mod) deleteBigInteger(product);
+        product = newBigIntegerValue(0);
         return product;
-    }    
- 
+    }
+
     tempRank = fabsCompareBigInteger(firstFactor, secondFactor);
-    
+
     if (tempRank == -1) {
         tempFirstFactorRank = secondFactor->tail;
         product = copyBigInteger(secondFactor);
-        deleteLater = secondFactor;
         tempSecondFactorRank = firstFactor->tail;
     }
     else {
         product = copyBigInteger(firstFactor);
-        deleteLater = firstFactor;
     }
+
     endOfFirstBigInt = tempFirstFactorRank;
     currentElement = product->tail;
     returnToPosition = product->tail;
+
     flag = 0;
     tempRank = 0;
     while (tempSecondFactorRank) {
-
         while (tempFirstFactorRank) {
             tempRank += tempSecondFactorRank->value * tempFirstFactorRank->value;
 
             if (flag) tempRank += currentElement->value;
-   
+
             currentElement->value = tempRank % 10;
             tempRank /= 10;
 
@@ -433,25 +477,23 @@ BigInteger* multiplyBigInteger(BigInteger *firstFactor,
         tempFirstFactorRank = endOfFirstBigInt;
         tempSecondFactorRank = tempSecondFactorRank->prev;
     }
-    if (mod) delete(deleteLater);
-
+    if (mod) deleteBigInteger(deleteLater);
 
     return product;
 }
 
 /*If (modCopyBlock == 0) then create new BigInteger,
-  if (modCopyBlock == 1) modify greater BigInteger
+  if (modCopyBlock == 1) modify first BigInteger
   If (ModDiv == 0) return (firstBigInteger % secondBigInteger)
   if (ModDiv == 1) return (firstBigInteger / secondBigInteger)*/
-BigInteger *divideBigInteger(BigInteger *dividend, BigInteger *divisor,
-                             char modCopyBlock, char ModDiv) {
-                                 
+BigInteger* divideBigInteger(BigInteger* dividend, BigInteger* divisor,
+    char modCopyBlock, char ModDiv) {
+
     char tempRank = 0;
     BigInteger* quotient = dividend;
-    DigitRank *tempFirstFactorRank = dividend->tail;
-    DigitRank *tempSecondFactorRank = divisor->tail;
     long int result = 0;
     char temp = 0;
+
     if (!checkExistance(dividend, "Dividend(BigInteger)") ||
         !checkExistance(dividend->tail, "Dividend(BigInteger)"))
         return NULL;
@@ -464,54 +506,59 @@ BigInteger *divideBigInteger(BigInteger *dividend, BigInteger *divisor,
         printf("\nERROR! Division by zero!\n");
         return NULL;
     }
-    
-    if (!modCopyBlock) quotient = newBigInteger();
+
     tempRank = fabsCompareBigInteger(dividend, divisor);
-    
-    if (tempRank != 1 && ModDiv) {
-        if (modCopyBlock) clear(quotient);
 
-        if (tempRank) addFrontValue(quotient, 0);    
-        else {
-            if (tempFirstFactorRank->value != tempSecondFactorRank->value)
-                addFrontValue(quotient, -1);
-            else addFrontValue(quotient, 1);
-        }
+    if (!tempRank) {
+        if (!ModDiv) result = 0;
+        else result = 1;
 
-        return quotient;
-    }
-
-    if (!ModDiv && modCopyBlock) {
-        if (tempRank == -1) return quotient;
-        else if(!tempRank) {
-            clear(quotient);
-            addFrontValue(quotient, 0);
-            printf("\n\n\nNot Here\n\n");
-            return quotient;
-        }
-    }   
-
-    quotient = copyBigInteger(dividend);
-
-    while ((temp = fabsCompareBigInteger(quotient, divisor)) != -1) {
-        /*result == (firstBigInteger / secondBigInteger)*/
-        ++result;
-        /*quotient == (firstBigInteger % secondBigInteger)*/
-        quotient = differenceBigInteger(quotient, divisor, 1);
-    }
-
-    if (!temp) {
-        ++result;
-        clear(quotient);
-        addFrontValue(quotient, 0);
-    }
-
-    if (modCopyBlock) delete(dividend);
-
-    if (ModDiv) {
-        delete(quotient);
+        if (modCopyBlock) deleteBigInteger(quotient);
         quotient = newBigIntegerValue(result);
     }
+    else if (tempRank == -1) {
+        if (ModDiv) {
+            result = 0;
+            if (modCopyBlock) deleteBigInteger(quotient);
+            quotient = newBigIntegerValue(result);
+        }
+        else {
+            if (modCopyBlock) {
+                quotient = dividend;
+            }
+            else {
+                quotient = copyBigInteger(dividend);
+            }
+        }
+    }
+    else {
+        quotient = copyBigInteger(dividend);
 
+        while ((temp = fabsCompareBigInteger(quotient, divisor)) == 1) {
+            /*result == (firstBigInteger / secondBigInteger)*/
+            ++result;
+            /*quotient == (firstBigInteger % secondBigInteger)*/
+            quotient = differenceBigInteger(quotient, divisor, 1);
+        }
+
+        if (!temp) {
+            ++result;
+            deleteBigInteger(quotient);
+            quotient = newBigIntegerValue(0);
+        }
+
+        if (!quotient->head || !quotient->head->value) {
+            printBigInteger(quotient);
+            removeFront(quotient);
+            printBigInteger(quotient);
+        }
+
+        if (modCopyBlock) deleteBigInteger(dividend);
+
+        if (ModDiv) {
+            deleteBigInteger(quotient);
+            quotient = newBigIntegerValue(result);
+        }
+    }
     return quotient;
 }
