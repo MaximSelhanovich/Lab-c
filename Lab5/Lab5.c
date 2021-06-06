@@ -70,7 +70,6 @@ int LucasLehmerRrimalityTest(int power) {
         printf("cccccccccccccc");
         printBigInteger(remainder);
     }
-
     f = remainder->head;
 
     deleteBigInteger(remainder);
