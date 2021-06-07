@@ -39,7 +39,7 @@ void testdifDate() {
 
     assert(compareDate(test1, test2) == -1);
     assert(compareDate(test2, test1) == 1);
-    assetr(!compareDate(test2, test1));
+    assert(!compareDate(test2, test1));
 
     deleteDate(test1);
     deleteDate(test2);
