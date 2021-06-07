@@ -1,13 +1,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "Date.h"
+#include "Task.h"
 
 
 int main() {
-    Date *new = getDate();
-    printDate(new);
+    Task *new = getTask();
+    printTask(new);
 
-    deleteDate(new);
+    deleteTask(new);
 
     return 0;
 }

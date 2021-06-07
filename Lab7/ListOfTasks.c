@@ -10,6 +10,8 @@ ListOfTasks* newListOfTasks() {
 
     list->head = list->tail = NULL;
     list->length = 0;
+
+    return list;
 }
 
 void addTask(ListOfTasks *list, Task *newTask) {
@@ -123,7 +125,7 @@ int searchTask(ListOfTasks *list, const char *nameToSearch) {
 Task *deleteTaskInList(ListOfTasks *list, const char *nameToSearch) {
     Task *temp = NULL;
 
-    if (!list || !list->head || !nameToSearch) return;
+    if (!list || !list->head || !nameToSearch) return NULL;
 
     temp = list->head;
 
@@ -147,6 +149,7 @@ Task *deleteTaskInList(ListOfTasks *list, const char *nameToSearch) {
         }
         temp = temp->nextTask;
     }
+    return NULL;
 }
 
 void deleteListOfTasks(ListOfTasks *list) {

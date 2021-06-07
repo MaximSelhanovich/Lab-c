@@ -83,7 +83,7 @@ void testListOfTasks() {
     /*Ocheredi\n2045\n8\n3\n2046\n8\n3\n*/
     Task *task4 = getTask();
     addTask(list, task4);
-    
+
 
     deleteListOfTasks(list);
 }
