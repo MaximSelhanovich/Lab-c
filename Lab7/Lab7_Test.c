@@ -24,7 +24,7 @@ void testgetMaxDay() {
     assert(getMaxDay(5) == 31);
 }
 
-void testdifDate(Date* start, Date* end) {
+void testdifDate() {
     /*2022\n5\n28\n*/
     Date *test1 = getDate();
     /*2026\n6\n30\n*/
@@ -92,7 +92,8 @@ void testListOfTasks() {
 #undef main
 
 int main() {
-
-
-
+    testgetDate();
+    testgetMaxDay();
+    testdifDate();
+    testgetTask();
 }
