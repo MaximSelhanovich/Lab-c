@@ -22,5 +22,5 @@ jobs:
           
     - name: Test them all
       run: make all -C Lab4/Lab4_1
-      
+ 
     - run: make all -C Lab4/Lab4_2
