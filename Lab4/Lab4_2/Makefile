@@ -9,7 +9,7 @@ Lab4_2: $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o Lab4_2
 
 CheckValgrind:
-    ./Lab4_2
+	./Lab4_2
 
 CheckLinter:
 	cpplint $(CPPLINTFLAGS) $(OBJ_TEST)
